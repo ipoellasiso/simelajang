@@ -1,0 +1,4 @@
+
+<div class='spinner-grow text-secondary' role='status'>
+    <span class='sr-only'>Loading...</span>
+</div>
