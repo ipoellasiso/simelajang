@@ -64,7 +64,7 @@ https://templatemo.com/tm-569-edu-meeting
   <!-- ***** Main Banner Area Start ***** -->
   <section class="section main-banner" id="top" data-section="section1">
       <video autoplay muted loop id="bg-video">
-          <source src="/login2/assets/images/212.mp4" type="video/mp4" />
+          {{-- <source src="/login2/assets/images/212.mp4" type="video/mp4" /> --}}
       </video>
 
       <div class="video-overlay header-text">
@@ -97,7 +97,7 @@ https://templatemo.com/tm-569-edu-meeting
         <div class="col-lg-12">
           <div class="owl-courses-item owl-carousel">
             <div class="item">
-              <img src="/landing/assets/images/1.jpg" alt="Course One">
+              {{-- <img src="/landing/assets/images/1.jpg" alt="Course One"> --}}
               <div class="down-content">
                 {{-- <h4>Morbi tincidunt elit vitae justo rhoncus</h4> --}}
                 <div class="info">
@@ -115,7 +115,7 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
             </div>
             <div class="item">
-              <img src="/landing/assets/images/2.jpg" alt="Course Two">
+              {{-- <img src="/landing/assets/images/2.jpg" alt="Course Two"> --}}
               <div class="down-content">
                 {{-- <h4>Curabitur molestie dignissim purus vel</h4> --}}
                 <div class="info">
@@ -135,7 +135,7 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
             </div>
             <div class="item">
-              <img src="/landing/assets/images/3.jpg" alt="">
+              {{-- <img src="/landing/assets/images/3.jpg" alt=""> --}}
               <div class="down-content">
                 {{-- <h4>Nulla at ipsum a mauris egestas tempor</h4> --}}
                 <div class="info">
@@ -156,7 +156,7 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
             </div>
             <div class="item">
-              <img src="/landing/assets/images/4.jpg" alt="">
+              {{-- <img src="/landing/assets/images/4.jpg" alt=""> --}}
               <div class="down-content">
                 {{-- <h4>Aenean molestie quis libero gravida</h4> --}}
                 <div class="info">
@@ -178,7 +178,7 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
             </div>
             <div class="item">
-              <img src="/landing/assets/images/5.jpg" alt="">
+              {{-- <img src="/landing/assets/images/5.jpg" alt=""> --}}
               <div class="down-content">
                 {{-- <h4>Lorem ipsum dolor sit amet adipiscing elit</h4> --}}
                 <div class="info">
@@ -200,7 +200,7 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
             </div>
             <div class="item">
-              <img src="/landing/assets/images/6.jpg" alt="">
+              {{-- <img src="/landing/assets/images/6.jpg" alt=""> --}}
               <div class="down-content">
                 {{-- <h4>TemplateMo is the best website for Free CSS</h4> --}}
                 <div class="info">
@@ -222,7 +222,7 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
             </div>
             <div class="item">
-              <img src="/landing/assets/images/7.jpg" alt="">
+              {{-- <img src="/landing/assets/images/7.jpg" alt=""> --}}
               <div class="down-content">
                 {{-- <h4>Web Design Templates at your finger tips</h4> --}}
                 <div class="info">
@@ -244,7 +244,7 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
             </div>
             <div class="item">
-              <img src="/landing/assets/images/8.jpg" alt="">
+              {{-- <img src="/landing/assets/images/8.jpg" alt=""> --}}
               <div class="down-content">
                 {{-- <h4>Please visit our website again</h4> --}}
                 <div class="info">
@@ -266,7 +266,7 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
             </div>
             <div class="item">
-              <img src="/landing/assets/images/9.jpg" alt="">
+              {{-- <img src="/landing/assets/images/9.jpg" alt=""> --}}
               <div class="down-content">
                 {{-- <h4>Responsive HTML Templates for you</h4> --}}
                 <div class="info">
@@ -288,7 +288,7 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
             </div>
             <div class="item">
-              <img src="/landing/assets/images/10.jpg" alt="">
+              {{-- <img src="/landing/assets/images/10.jpg" alt=""> --}}
               <div class="down-content">
                 {{-- <h4>Download Free CSS Layouts for your business</h4> --}}
                 <div class="info">
@@ -310,7 +310,7 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
             </div>
             <div class="item">
-              <img src="/landing/assets/images/11.jpg" alt="">
+              {{-- <img src="/landing/assets/images/11.jpg" alt=""> --}}
               <div class="down-content">
                 {{-- <h4>Morbi in libero blandit lectus cursus</h4> --}}
                 <div class="info">
@@ -332,7 +332,7 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
             </div>
             <div class="item">
-              <img src="/landing/assets/images/1.jpg" alt="">
+              {{-- <img src="/landing/assets/images/1.jpg" alt=""> --}}
               <div class="down-content">
                 {{-- <h4>Curabitur molestie dignissim purus</h4> --}}
                 <div class="info">
