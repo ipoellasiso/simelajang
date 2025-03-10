@@ -27,7 +27,7 @@
                                 <div class="col-md-6 col-xl-2">
                                     <div class="card stat-widget">
                                         <div class="card-body">
-                                        <h5 class="card-title">Total Pajak Januari ditess<p></p>{{ $totalcount1 }} </h5>
+                                        <h5 class="card-title">Total Pajak Januari<p></p>{{ $totalcount1 }} </h5>
                                         <h2></h2>
                                         <p>Rp. {{ number_format($total_1,2) }}</p>
                                         </div>
@@ -54,7 +54,7 @@
                                 <div class="col-md-6 col-xl-2">
                                     <div class="card stat-widget">
                                         <div class="card-body">
-                                        <h5 class="card-title">Total Pajak April123456 <p></p>{{ $totalcount4 }}</h5>
+                                        <h5 class="card-title">Total Pajak April <p></p>{{ $totalcount4 }}</h5>
                                             <h2></h2>
                                             <p>Rp. {{ number_format($total_4,2) }}</p>
                                         </div>
