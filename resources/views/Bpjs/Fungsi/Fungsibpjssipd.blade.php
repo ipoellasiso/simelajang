@@ -24,7 +24,7 @@
         columns: [
             // {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'status1', name: 'status1'},
-            // {data: 'nomor_spm', name: 'nomor_spm'},
+            {data: 'nama_skpd', name: 'nama_skpd'},
             {data: 'tanggal_sp2d', name: 'tanggal_sp2d'},
             {data: 'nomor_sp2d', name: 'nomor_sp2d'},
             {data: 'nilai_sp2d1', name: 'nilai_sp2d1'},

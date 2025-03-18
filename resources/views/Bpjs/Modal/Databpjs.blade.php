@@ -23,7 +23,7 @@
                                     <tr>
                                         <!-- <th class="text-center">No</th> -->
                                         <th></th>
-                                        {{-- <th>Nomor SPM</th> --}}
+                                        <th>Nama SKPD</th>
                                         <th>Tanggal SP2D</th>
                                         <th>Nomor SP2D</th>
                                         <th>Nilai SP2D</th>
