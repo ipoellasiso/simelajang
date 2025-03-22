@@ -13,6 +13,7 @@ use App\Http\Controllers\OpdController;
 use App\Http\Controllers\PajakguadminController;
 use App\Http\Controllers\PajakguController;
 use App\Http\Controllers\PajaklsController;
+use App\Http\Controllers\PajaklsuserController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\Registersp2dController;
 use App\Http\Controllers\TarikdataController;
@@ -147,7 +148,7 @@ Route::post('/pajakgu/terimaguupdate/{id}', [PajakguController::class, 'terimagu
 Route::get('/pajakgu/lihat/{id}', [PajakguController::class, 'lihat'])->middleware('auth:web','checkRole:User,Admin');
 Route::get('/pajakgu/totalnilai', [PajakguController::class, 'totalpajakgu'])->middleware('auth:web','checkRole:User,Admin');
 
-// ======= DATA PAJAKLS =======
+// ======= DATA BPJS =======
 Route::get('/tampilbpjs', [BpjsController::class, 'index'])->middleware('auth:web','checkRole:Admin');
 Route::get('/tampilbpjssipd', [BpjsController::class, 'pilihbpjssipd'])->middleware('auth:web','checkRole:Admin');
 Route::get('/tampilbpjssipdedit', [BpjsController::class, 'pilihbpjssipdedit'])->middleware('auth:web','checkRole:Admin');
@@ -252,3 +253,6 @@ Route::get('/tampilindekslaporanguuser/{id}/tampilrekapuser', [LaporanguuserCont
 Route::get('/tampilindekslaporanguuser/{id}/tampilawalrekapsemuaopduser', [LaporanguuserController::class, 'laporangurekapsemuaopd'])->name('laporan.laporangurekapsemuaopduser.tampilrekap')->middleware('auth:web','checkRole:User');
 Route::get('/tampilindekslaporanguuser/{id}/tampilrekapsemuaopduser', [LaporanguuserController::class, 'laporangurekapsemuaopd'])->name('laporan.laporangurekapsemuaopduser.tampilrekap')->middleware('auth:web','checkRole:User');
 Route::get('/laporanpajakgurekapsemuaopduser-cetak', [LaporanguuserController::class, 'cetakrekapgusemuaopd'])->name('laporanpajakgurekapsemuaopduser-cetak')->middleware('auth:web','checkRole:User');
+
+// ======= DATA PAJAKLS USER =======
+Route::get('/tampilpajaklsuser', [PajaklsuserController::class, 'index'])->middleware('auth:web','checkRole:User');
