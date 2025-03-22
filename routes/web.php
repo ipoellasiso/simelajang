@@ -192,6 +192,7 @@ Route::delete('/pajakgu/destroyadmin/{id}', [PajakguadminController::class, 'des
 
 // ======= Export Data  Pajakls =======
 Route::get('/datapajak/export', [PajaklsController::class, 'export'])->middleware('auth:web','checkRole:User,Admin');
+Route::get('/datapajak/exportbeluminput', [PajaklsController::class, 'exportlsbeluminput'])->middleware('auth:web','checkRole:User,Admin');
 
 // ======= Export Data  Pajakgu =======
 Route::get('/datapajakgu/export', [PajakguadminController::class, 'export'])->middleware('auth:web','checkRole:User,Admin');
@@ -208,6 +209,7 @@ Route::get('/laporanpajakls-cetak', [LaporanlsController::class, 'cetak'])->name
 Route::get('/laporanpajaklsrekap-cetak', [LaporanlsController::class, 'cetakrekapls'])->name('laporanpajaklsrekap-cetak')->middleware('auth:web','checkRole:Admin');
 
 Route::get('/downloadlaporanexcel', [LaporanlsController::class, 'Exportexcells'])->name('laporan.downloadlaporanexcel')->middleware('auth:web','checkRole:Admin');
+// Route::get('/downloadlaporanexcel2', [LaporanlsController::class, 'Exportexcellsbeluminput'])->name('laporan.downloadlaporanexcel2')->middleware('auth:web','checkRole:Admin');
 
 // Laporan Ls Rekap 
 Route::get('/tampilindekslaporanls/{id}/tampilawalrekap', [LaporanlsController::class, 'laporanlsrekap'])->name('laporan.laporanlsrekap.tampilrekap')->middleware('auth:web','checkRole:Admin');

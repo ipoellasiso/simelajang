@@ -145,12 +145,12 @@ class PajakguadminController extends Controller
     {
         $userId = Auth::guard('web')->user()->id;
         $data = array(
-            'title'                => 'Data Pajak LS Belum Diinput',
-            'active_side_pajakls'    => 'active',
+            'title'                => 'Data Pajak GU Belum Diinput',
+            'active_side_pajakls'  => 'active',
             'active_pajakls'       => 'active',
             'page_title'           => 'Penatausahaan',
             'breadcumd1'           => 'Data Pajak Belum Diinput',
-            'breadcumd2'           => 'LS',
+            'breadcumd2'           => 'GU',
             'userx'                => UserModel::where('id',$userId)->first(['fullname','role','gambar',]),
             'opd'                  => DB::table('users')
                                     // ->join('opd',  'opd.id', 'users.id_opd')

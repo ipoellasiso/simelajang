@@ -37,7 +37,7 @@
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" href="javascript:void(0)" id="createPajakls" data-toggle="tooltip" data-placement="top" title="klik"> Tambah </a>
-                                                    <a class="dropdown-item" href="javascript:void(0)" id="uploadPajakls" data-toggle="tooltip" data-placement="top" title="klik"> Upload </a>
+                                                    <a class="dropdown-item" href="/datapajak/exportbeluminput" data-toggle="tooltip" data-placement="top" title="klik"> Download Ecxel </a>
                                                 </ul>
                                             </div>
                                         </div>

@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\File;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\DataExport;
 use App\Exports\DataExport2;
+use App\Exports\DataExportbeluminput;
 use App\Imports\DataImport;
 use Maatwebsite\Excel\Row;
 

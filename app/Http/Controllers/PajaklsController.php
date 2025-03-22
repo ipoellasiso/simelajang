@@ -16,8 +16,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\DataExport;
-use App\Imports\DataImport;
-use Maatwebsite\Excel\Row;
+use App\Exports\DataExportbeluminput;
 use Illuminate\Support\Facades\Validator;
 
 class PajaklsController extends Controller
@@ -588,4 +587,11 @@ class PajaklsController extends Controller
         return Excel::download(new DataExport, $nama_file);
     }
 
+    public function exportlsbeluminput()
+    {
+        $nama_file = 'Data Pajak-'.date('Y-m-d_H-i-s').'.xlsx';
+        return Excel::download(new DataExportbeluminput, $nama_file);
+    }
+
+    
 }
