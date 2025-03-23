@@ -35,12 +35,42 @@ class PajaklsuserController extends Controller
                                     // ->select('fullname','nama_opd')
                                     ->where('nama_opd', auth()->user()->nama_opd)
                                     ->first(),
-            'total_ppn'            => PajaklsModel::where('jenis_pajak', 'Pajak Pertambahan Nilai')->where('status2', 'Terima')->sum('nilai_pajak'),
-            'total_pph21'          => PajaklsModel::where('jenis_pajak', 'PPH 21')->where('status2', 'Terima')->sum('nilai_pajak'),
-            'total_pph22'          => PajaklsModel::where('jenis_pajak', 'Pajak Penghasilan PS 22')->where('status2', 'Terima')->sum('nilai_pajak'),
-            'total_pph23'          => PajaklsModel::where('jenis_pajak', 'Pajak Penghasilan PS 23')->where('status2', 'Terima')->sum('nilai_pajak'),
-            'total_pph24'          => PajaklsModel::where('jenis_pajak', 'Pajak Penghasilan PS 24')->where('status2', 'Terima')->sum('nilai_pajak'),
-            'total_pajakls'          => PajaklsModel::where('status2', 'Terima')->sum('nilai_pajak'),
+            'total_ppn'            => PajaklsModel::where('potongan2.jenis_pajak', 'Pajak Pertambahan Nilai')
+                                    ->join('potongan2',  'potongan2.id', 'pajakkpp.id_potonganls')
+                                    ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
+                                    ->where('status2', 'Terima')
+                                    ->where('sp2d.nama_skpd', auth()->user()->nama_opd)
+                                    ->sum('potongan2.nilai_pajak'),
+            'total_pph21'          => PajaklsModel::where('potongan2.jenis_pajak', 'PPH 21')
+                                    ->join('potongan2',  'potongan2.id', 'pajakkpp.id_potonganls')
+                                    ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
+                                    ->where('status2', 'Terima')
+                                    ->where('sp2d.nama_skpd', auth()->user()->nama_opd)
+                                    ->sum('potongan2.nilai_pajak'),
+            'total_pph22'          => PajaklsModel::where('potongan2.jenis_pajak', 'Pajak Penghasilan PS 22')
+                                    ->join('potongan2',  'potongan2.id', 'pajakkpp.id_potonganls')
+                                    ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
+                                    ->where('status2', 'Terima')
+                                    ->where('sp2d.nama_skpd', auth()->user()->nama_opd)
+                                    ->sum('potongan2.nilai_pajak'),
+            'total_pph23'          => PajaklsModel::where('potongan2.jenis_pajak', 'Pajak Penghasilan PS 23')
+                                    ->join('potongan2',  'potongan2.id', 'pajakkpp.id_potonganls')
+                                    ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
+                                    ->where('status2', 'Terima')
+                                    ->where('sp2d.nama_skpd', auth()->user()->nama_opd)
+                                    ->sum('potongan2.nilai_pajak'),
+            'total_pph24'          => PajaklsModel::where('potongan2.jenis_pajak', 'Pajak Penghasilan PS 24')
+                                    ->join('potongan2',  'potongan2.id', 'pajakkpp.id_potonganls')
+                                    ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
+                                    ->where('status2', 'Terima')
+                                    ->where('sp2d.nama_skpd', auth()->user()->nama_opd)
+                                    ->sum('potongan2.nilai_pajak'),
+            'total_pajakls'          => PajaklsModel::where('status2', 'Terima')
+                                    ->join('potongan2',  'potongan2.id', 'pajakkpp.id_potonganls')
+                                    ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
+                                    // ->where('status2', 'Terima')
+                                    ->where('sp2d.nama_skpd', auth()->user()->nama_opd)
+                                    ->sum('potongan2.nilai_pajak'),
         );
 
         if ($request->ajax()) {
