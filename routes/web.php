@@ -9,6 +9,7 @@ use App\Http\Controllers\JenispajakController;
 use App\Http\Controllers\LaporanguController;
 use App\Http\Controllers\LaporanguuserController;
 use App\Http\Controllers\LaporanlsController;
+use App\Http\Controllers\LaporanlsControllerUser;
 use App\Http\Controllers\OpdController;
 use App\Http\Controllers\PajakguadminController;
 use App\Http\Controllers\PajakguController;
@@ -256,3 +257,17 @@ Route::get('/laporanpajakgurekapsemuaopduser-cetak', [LaporanguuserController::c
 
 // ======= DATA PAJAKLS USER =======
 Route::get('/tampilpajaklsuser', [PajaklsuserController::class, 'index'])->middleware('auth:web','checkRole:User');
+
+//======== Laporan LS USER =========
+Route::get('/tampilindekslaporanlsuser', [LaporanlsControllerUser::class, 'index'])->name('laporan.pajaklsuser.index')->middleware('auth:web','checkRole:User');
+Route::get('/tampilindekslaporanlsuser/{id}/tampilawal', [LaporanlsControllerUser::class, 'laporanls'])->name('laporan.laporanlsuser.tampil')->middleware('auth:web','checkRole:User');
+Route::get('/tampilindekslaporanlsuser/{id}/tampil', [LaporanlsControllerUser::class, 'laporanls'])->name('laporan.laporanlsuser.tampil')->middleware('auth:web','checkRole:User');
+Route::get('/laporanpajaklsuser/opd', [LaporanlsControllerUser::class, 'getDataopd'])->middleware('auth:web','checkRole:User');
+Route::get('/laporanpajaklsuser-cetak', [LaporanlsControllerUser::class, 'cetak'])->name('laporanpajaklsuser-cetak')->middleware('auth:web','checkRole:User');
+Route::get('/laporanpajaklsrekapuser-cetak', [LaporanlsControllerUser::class, 'cetakrekapls'])->name('laporanpajaklsrekapuser-cetak')->middleware('auth:web','checkRole:User');
+
+Route::get('/downloadlaporanexceluser', [LaporanlsControllerUser::class, 'Exportexcells'])->name('laporan.downloadlaporanexceluser')->middleware('auth:web','checkRole:User');
+
+// Laporan Ls Rekap 
+Route::get('/tampilindekslaporanlsuser/{id}/tampilawalrekap', [LaporanlsControllerUser::class, 'laporanlsrekap'])->name('laporan.laporanlsrekapuser.tampilrekap')->middleware('auth:web','checkRole:User');
+Route::get('/tampilindekslaporanlsuser/{id}/tampilrekap', [LaporanlsControllerUser::class, 'laporanlsrekap'])->name('laporan.laporanlsrekapuser.tampilrekap')->middleware('auth:web','checkRole:User');
