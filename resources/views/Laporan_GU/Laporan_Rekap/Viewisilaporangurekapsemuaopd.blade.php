@@ -113,8 +113,8 @@
                                                     {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411121')->sum('nilai_pajak'), 0) }} <br>
                                                     {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411122')->sum('nilai_pajak'), 0) }} <br>
                                                     {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411124')->sum('nilai_pajak'), 0) }} <br>
-                                                    {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411128')->sum('nilai_pajak'), 0) }} <br>
-                                                    {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411618')->sum('nilai_pajak'), 0) }}
+                                                    {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411128')->sum('nilai_pajak'), 0) }} <br>
+                                                    {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411618')->sum('nilai_pajak'), 0) }}
                                                 </td>
                                             </tr>
 
