@@ -96,14 +96,16 @@
                                                     411121 <br>
                                                     411122 <br>
                                                     411124 <br>
-                                                    411128
+                                                    411128 <br>
+                                                    411618
                                                 </td>
                                                 <td class="text-left" style="width: 15%">
                                                     Pajak Pertambahan Nilai <br>
                                                     PPh 21 <br>
                                                     Pajak Penghasilan PS 22 <br>
                                                     Pajak Penghasilan PS 23 <br>
-                                                    Pajak Penghasilan PS 24 
+                                                    Pajak Penghasilan PS 24 <br>
+                                                    - <br>
                                                 </td>
                                                 @php $total2 = 0; @endphp
                                                 <td class="text-right" style="width: 5%" align="right">
@@ -111,7 +113,8 @@
                                                     {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411121')->sum('nilai_pajak'), 0) }} <br>
                                                     {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411122')->sum('nilai_pajak'), 0) }} <br>
                                                     {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411124')->sum('nilai_pajak'), 0) }} <br>
-                                                    {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411128')->sum('nilai_pajak'), 0) }}
+                                                    {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411128')->sum('nilai_pajak'), 0) }} <br>
+                                                    {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411618')->sum('nilai_pajak'), 0) }}
                                                 </td>
                                             </tr>
 
