@@ -87,7 +87,7 @@
                                                 Pajak Penghasilan PS 22 <br>
                                                 Pajak Penghasilan PS 23 <br>
                                                 Pajak Penghasilan PS 24 <br>
-                                                - <br>
+                                                (Pajak Pertambahan Nilai, PPh 21, Pajak Penghasilan PS 22, 23 dan 24) <br>
                                             </td>
                                             @php $total2 = 0; @endphp
                                             <td class="text-right" style="width: 5%" align="right">

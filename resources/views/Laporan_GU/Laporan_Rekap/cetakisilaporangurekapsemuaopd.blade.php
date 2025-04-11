@@ -78,7 +78,8 @@
                                                 411121 <br>
                                                 411122 <br>
                                                 411124 <br>
-                                                411128
+                                                411128 <br>
+                                                411618
                                             </td>
                                             <td class="" style="width: 15%">
                                                 Pajak Pertambahan Nilai <br>
@@ -86,6 +87,7 @@
                                                 Pajak Penghasilan PS 22 <br>
                                                 Pajak Penghasilan PS 23 <br>
                                                 Pajak Penghasilan PS 24 <br>
+                                                (Pajak Pertambahan Nilai, PPh 21, Pajak Penghasilan PS 22, 23 dan 24) <br>
                                             </td>
                                             @php $total2 = 0; @endphp
                                             <td class="text-right" style="width: 5%" align="right">
