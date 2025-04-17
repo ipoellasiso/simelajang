@@ -100,8 +100,7 @@
                                                     PPh 21 <br>
                                                     Pajak Penghasilan PS 22 <br>
                                                     Pajak Penghasilan PS 23 <br>
-                                                    Pajak Penghasilan PS 24 <br>
-                                                    Pajak Penghasilan PS 24
+                                                    Pajak Penghasilan PS 24 
                                                 </td>
                                                 @php $total2 = 0; @endphp
                                                 <td class="text-right" style="width: 5%" align="right">
