@@ -271,10 +271,10 @@ class TarikdataController extends Controller
                     ->addColumn('status', function($row){
                         if($row->status1 == 'Belum_Verifikasi')
                         {
-                            // $btn1 = '
-                            //         <a href="javascript:void(0)" data-id="'.$row->id.'" class="deletepengajuantbp btn btn-outline-danger m-b-xs"> <i class="fa fa-trash"></i> Hapus
-                            //         </a>
-                            //       ';
+                            $btn1 = '
+                                    <a href="javascript:void(0)" data-id="'.$row->id.'" class="deletepengajuantbp btn btn-outline-danger m-b-xs"> <i class="fa fa-trash"></i> Hapus
+                                    </a>
+                                  ';
                         }else {
                             $btn1 = '
                                     <a href="javascript:void(0)" data-id="'.$row->id.'" data-ebilling="'.$row->nomor_tbp.'" class="tolaktbp btn btn-outline-primary m-b-xs"> <i class="fas fa-thumbs-up"></i> Terima
