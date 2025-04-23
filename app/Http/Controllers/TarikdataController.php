@@ -272,7 +272,7 @@ class TarikdataController extends Controller
                         if($row->status1 == 'Belum_Verifikasi')
                         {
                             $btn1 = '
-                                    <a href="javascript:void(0)" data-id="'.$row->id.'" class="deletepengajuantbp btn btn-outline-danger m-b-xs"> <i class="fa fa-trash"></i> Hapus
+                                    <a href="javascript:void(0)" data-id="'.$row->id.'" class="deletepengajuantbp111up btn btn-outline-danger m-b-xs"> <i class="fa fa-trash"></i> Hapus
                                     </a>
                                   ';
                         }else {
