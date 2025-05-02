@@ -62,7 +62,7 @@
                                                             <div class="row mb-4">
                                                                 <div class="col">
                                                                     <label for="no_spm" class="form-label">NOMOR SPM </label>
-                                                                    <input id="no_spm" name="no_spm" type="text" class="form-control"></input>
+                                                                    <input id="no_spm" name="no_spm" type="text" class="form-control" required></input>
                                                                 </div>
                                                             </div>
                 
@@ -70,7 +70,7 @@
                                                                 <div class="col">
                                                                     <label for="url" class="form-label">Isi Data Json </label>
                                                                     <!-- <textarea name="textarea" rows="5" cols="40">Write something here</textarea> -->
-                                                                    <textarea id="jsontextareatbp" name="jsontextareatbp" type="text" class="form-control" rows="10"></textarea>
+                                                                    <textarea id="jsontextareatbp" name="jsontextareatbp" type="text" class="form-control" rows="10" required></textarea>
                                                                 </div>
                                                             </div>
                 
