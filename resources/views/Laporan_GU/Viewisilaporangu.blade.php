@@ -111,9 +111,9 @@
                                                 </div>
                                                 <div class="col-4 align-middle fw-bold text-center" style=" margin-top: 15px; text-align: center; font-size: 17px; font-weight: bold;">
                                                     Palu, {{ now()->format('d M Y') }}<br>
-                                                    {{ $bulan->jabatan_bud_kbud }}<br><br><br><br><br><br>
-                                                    {{ $bulan->nama_bud_kbud }}<br>
-                                                    NIP. {{ $bulan->nip_bud_kbud }}
+                                                    PENGGUNA ANGGARAN<br><br><br><br><br><br>
+                                                    {{ $bulan->nama_pa_kpa }}<br>
+                                                    NIP. {{ $bulan->nip_pa_kpa }}
                                                 </div>
                                             </div>
 
