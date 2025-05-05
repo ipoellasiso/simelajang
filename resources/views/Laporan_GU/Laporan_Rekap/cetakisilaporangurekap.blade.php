@@ -112,10 +112,10 @@
                             <div class="row" border="0" align="center" style="width: 145%">
                                 <div class="col-1">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     </td>
                                 </div>
-                                <div class="col-8" style="width: 20%;">
+                                <div class="col-7" style="width: 20%;">
                                     Palu, {{ now()->format('d M Y') }}<br>
                                     PENGGUNA ANGGARAN<br><br><br><br><br><br>
                                     <u><b>{{ $bulanrekap->nama_pa_kpa }}</b></u><br>
