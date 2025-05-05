@@ -36,6 +36,7 @@
                     <div class="col-10 align-middle fw-bold text-center text-uppercase" style=" margin-top: 15px; text-align: center; font-size: 17px; font-weight: bold;">
                         PEMERINTAH KOTA PALU <br>
                         REKAPITULASI PENYETORAN PAJAK GU <br>
+                        {{ $bulan->nama_skpd }} <br>
                         TAHUN ANGGARAN 2025<br>
                     </div>
                     <div class="col-1">
