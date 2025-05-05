@@ -135,9 +135,9 @@
                                     </div>
                                     <div class="col-5" style="width: 20%;">
                                         Palu, {{ now()->format('d M Y') }}<br>
-                                        <td><center><b>{{ $bulanrekap->jabatan_bud_kbud }}</b></center></td><br><br><br><br>
-                                        <u><b>{{ $bulanrekap->nama_bud_kbud }}</b></u><br>
-                                        <b>NIP. {{ $bulanrekap->nip_bud_kbud }}</b>
+                                        PENGGUNA ANGGARAN<br><br><br><br><br><br>
+                                        {{ $bulanrekap->nama_pa_kpa }}<br>
+                                        NIP. {{ $bulanrekap->nip_pa_kpa }}
                                     </div>
                                 </div>
                                     

@@ -96,7 +96,7 @@
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th colspan="8" style="text-align: right">Total Pajak</th>
+                                                        <th colspan="10" style="text-align: right">Total Pajak</th>
                                             
                                                         <td style="text-align: right"> {{ number_format($total = $datapajakgu->sum('nilai_pajak'), 0) }}</td>
                                                     </tr>

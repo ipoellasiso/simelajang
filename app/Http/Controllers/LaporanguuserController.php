@@ -149,6 +149,7 @@ class LaporanguuserController extends Controller
             $datapajakgurekap = DB::table('pajakkppgu')
                             ->select('pajakkppgu.ebilling', 'sp2d.tanggal_sp2d', 'pajakkppgu.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkppgu.nomor_npwp', 'pajakkppgu.akun_pajak', 'pajakkppgu.ntpn', 'pajakkppgu.jenis_pajak', 'pajakkppgu.rek_belanja','pajakkppgu.nama_npwp', 'pajakkppgu.id_potonganls', 'pajakkppgu.id', 'pajakkppgu.status2', 'pajakkppgu.created_at', 'pajakkppgu.bukti_pemby', 'sp2d.nilai_sp2d', 'pajakkppgu.nilai_pajak', 'pajakkppgu.id_opd', 'pajakkppgu.periode', 'pajakkppgu.status1', 'sp2d.nama_skpd')
                             ->join('sp2d', 'sp2d.nomor_spm', 'pajakkppgu.no_spm')
+                            ->join('users', 'users.nama_opd', 'pajakkppgu.id_opd')
                             ->where('sp2d.nama_skpd','like', "%".$request->nama_skpd24."%")
                             ->where('pajakkppgu.periode','like',"%".$request->periode2."%")
                             ->where('pajakkppgu.status2','like', "%".$request->status22."%")
