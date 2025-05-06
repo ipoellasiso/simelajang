@@ -74,6 +74,7 @@
 
                                             </td>
                                             <td class="" style="width: 10%">
+                                                {{ $bulanrekap->periode }}<br>
                                                 411211 <br>
                                                 411121 <br>
                                                 411122 <br>
@@ -82,6 +83,7 @@
                                                 411618
                                             </td>
                                             <td class="" style="width: 15%">
+                                                <br>
                                                 Pajak Pertambahan Nilai <br>
                                                 PPh 21 <br>
                                                 Pajak Penghasilan PS 22 <br>
@@ -91,6 +93,7 @@
                                             </td>
                                             @php $total2 = 0; @endphp
                                             <td class="text-right" style="width: 5%" align="right">
+                                                <br>
                                                 {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411211')->sum('nilai_pajak'), 0) }} <br>
                                                 {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411121')->sum('nilai_pajak'), 0) }} <br>
                                                 {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411122')->sum('nilai_pajak'), 0) }} <br>

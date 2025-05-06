@@ -64,6 +64,7 @@
                                                     <th>Nilai Pajak</th>
                                                     <th>E-Biling</th>
                                                     <th>NTPN</th>
+                                                    <th>Periode</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -82,6 +83,7 @@
                                                         <td style="border: 2;width: 20%;">{{ number_format($d->nilai_pajak) }}</td>
                                                         <td style="border: 2;width: 10%;">{{ $d->ebilling }}</td>
                                                         <td style="border: 2;width: 10%;">{{ $d->ntpn }}</td>
+                                                        <td style="border: 2;width: 10%;">{{ $d->periode }}</td>
                                                     </tr>
                                                     
                                                 @endforeach
