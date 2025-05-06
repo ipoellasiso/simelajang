@@ -274,7 +274,7 @@ Route::get('/tampilindekslaporanlsuser/{id}/tampilawalrekap', [LaporanlsControll
 Route::get('/tampilindekslaporanlsuser/{id}/tampilrekap', [LaporanlsControllerUser::class, 'laporanlsrekap'])->name('laporan.laporanlsrekapuser.tampilrekap')->middleware('auth:web','checkRole:User');
 
 //======== Laporan GU SPM ADMIN =========
-Route::get('/tampilindekslaporanspmgu', [LaporanSpmGuController::class, 'index'])->name('laporan.pajakguspm.index')->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilindekslaporanspmgu1', [LaporanSpmGuController::class, 'index'])->name('laporan.pajakguspm.index')->middleware('auth:web','checkRole:Admin');
 Route::get('/tampilindekslaporanspmgu/{id}/tampilawal', [LaporanSpmGuController::class, 'laporangu'])->name('laporan.laporanguspm.tampil')->middleware('auth:web','checkRole:Admin');
 Route::get('/tampilindekslaporanspmgu/{id}/tampil', [LaporanSpmGuController::class, 'laporangu'])->name('laporan.laporanguspm.tampil')->middleware('auth:web','checkRole:Admin');
 Route::get('/tampilindekslaporanspmgu-cetak', [LaporanSpmGuController::class, 'cetak'])->name('laporanpajakguspm-cetak')->middleware('auth:web','checkRole:Admin');

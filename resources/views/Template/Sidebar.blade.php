@@ -123,7 +123,7 @@
           @if(Auth::user()->role == 'Admin' || Auth::user()->role == 'Verifikasi')
           <li @if(isset($active_pajakls)){{ $active_pajakls }} @endif><a href="/tampilindekslaporanls"><i class="far fa-circle"></i>SP2D LS</a></li>
           <li @if(isset($active_pajakgu)){{ $active_pajakgu }} @endif><a href="/tampilindekslaporangu"><i class="far fa-circle"></i>SP2D GU</a></li>
-          <li @if(isset($active_pajakgu)){{ $active_pajakgu }} @endif><a href="/tampilindekslaporanspmgu"><i class="far fa-circle"></i>SPM GU</a></li>
+          <li @if(isset($active_pajakgu)){{ $active_pajakgu }} @endif><a href="/tampilindekslaporanspmgu1"><i class="far fa-circle"></i>SPM GU</a></li>
           @endif
           @if(Auth::user()->role == 'User')
           <li @if(isset($active_pajakgu)){{ $active_pajakgu }} @endif><a href="/tampilindekslaporanlsuser"><i class="far fa-circle"></i>LS</a></li>
