@@ -10,6 +10,7 @@ use App\Http\Controllers\LaporanguController;
 use App\Http\Controllers\LaporanguuserController;
 use App\Http\Controllers\LaporanlsController;
 use App\Http\Controllers\LaporanlsControllerUser;
+use App\Http\Controllers\LaporanSpmGuController;
 use App\Http\Controllers\OpdController;
 use App\Http\Controllers\PajakguadminController;
 use App\Http\Controllers\PajakguController;
@@ -271,3 +272,9 @@ Route::get('/downloadlaporanexceluser', [LaporanlsControllerUser::class, 'Export
 // Laporan Ls Rekap 
 Route::get('/tampilindekslaporanlsuser/{id}/tampilawalrekap', [LaporanlsControllerUser::class, 'laporanlsrekap'])->name('laporan.laporanlsrekapuser.tampilrekap')->middleware('auth:web','checkRole:User');
 Route::get('/tampilindekslaporanlsuser/{id}/tampilrekap', [LaporanlsControllerUser::class, 'laporanlsrekap'])->name('laporan.laporanlsrekapuser.tampilrekap')->middleware('auth:web','checkRole:User');
+
+//======== Laporan GU SPM ADMIN =========
+Route::get('/tampilindekslaporanspmgu', [LaporanSpmGuController::class, 'index'])->name('laporan.pajakguspm.index')->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilindekslaporanspmgu/{id}/tampilawal', [LaporanSpmGuController::class, 'laporangu'])->name('laporan.laporanguspm.tampil')->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilindekslaporanspmgu/{id}/tampil', [LaporanSpmGuController::class, 'laporangu'])->name('laporan.laporanguspm.tampil')->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilindekslaporanspmgu-cetak', [LaporanSpmGuController::class, 'cetak'])->name('laporanpajakguspm-cetak')->middleware('auth:web','checkRole:Admin');
