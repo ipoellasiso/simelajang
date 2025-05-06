@@ -155,11 +155,11 @@
         <script>
         $(document).ready(function(){
                 $("#cetakpdfgurekapsemuaopduser").click(function(e){
-                    var periode3 = $('#periode3').val();
-                    var status23 = $("#status23").val();
+                    var periode2 = $('#periode2').val();
+                    var status22 = $("#status22").val();
                     var nama_skpd24 = $("#nama_skpd24").val();
                     // alert( nama_skpd + "" + periode + "" + akun_pajak + "" + status2);
-                    params = "?page=rekaplaporansemuaopduser&periode3=" + periode3 + "&status23=" + status23
+                    params = "?page=rekaplaporansemuaopduser&periode2=" + periode2 + "&status22=" + status22
                     window.open("/laporanpajakgurekapsemuaopduser-cetak"+params,"_blank");
                 });
             });
