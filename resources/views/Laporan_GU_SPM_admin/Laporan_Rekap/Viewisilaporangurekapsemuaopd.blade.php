@@ -28,12 +28,12 @@
                     <div class="col-8">
                     </div>
                     <div class="col-2">
-                        <button id="cetakpdfgurekapsemuaopduser" target="blank" type="button" class="btn btn-outline-primary m-b-xs text-center" style="text-align: center">
+                        <button id="cetakpdfgurekapsemuaopd" target="blank" type="button" class="btn btn-outline-primary m-b-xs text-center" style="text-align: center">
                             <i class="fa fa-enter"></i>PDF  
                         </button>
-                        {{-- <button id="cetakexcelgusemuaopduser" target="blank" type="button" class="btn btn-outline-info m-b-xs">
+                        <button id="cetakexcelgusemuaopd" target="blank" type="button" class="btn btn-outline-info m-b-xs">
                             <i class="fa fa-enter"></i>Excel
-                        </button> --}}
+                        </button>
                     </div>
                 </div>
             
@@ -47,7 +47,7 @@
                         <td colspan="6" style="width: 55%;">
                             <font style="font-size: 20pt;font-weight: bold;"><center>PEMERINTAH KOTA PALU</center></font>
                             <font style="font-size: 13pt;font-weight: bold;"><center>REKAPITULASI PAJAK REALISASI BELANJA GU</center></font>
-                            <font style="font-size: 13pt;font-weight: bold;"><center>{{ $bulanrekapsemuaopd->nama_skpd }}</center></font>
+                            {{-- <font style="font-size: 13pt;font-weight: bold;"><center>{{ $bulanrekapsemuaopd->nama_skpd }}</center></font> --}}
                             <font style="font-size: 13pt;font-weight: bold;"><center>TAHUN ANGGARAN 2025</center></font>
                             <!-- <font style="font-size: 11pt;font-weight:13"><center>Alamat : Jl. Baruga No. 2 No.Tlp : 0451-9384 Kode Pos : 94362</center></font> -->
                         </td>
@@ -92,7 +92,6 @@
 
                                                 </td>
                                                 <td class="text-left" style="width: 10%">
-                                                    {{ $bulanrekapsemuaopd->periode }}<br>
                                                     411211 <br>
                                                     411121 <br>
                                                     411122 <br>
@@ -101,7 +100,6 @@
                                                     411618
                                                 </td>
                                                 <td class="text-left" style="width: 15%">
-                                                    <br>
                                                     Pajak Pertambahan Nilai <br>
                                                     PPh 21 <br>
                                                     Pajak Penghasilan PS 22 <br>
@@ -111,7 +109,6 @@
                                                 </td>
                                                 @php $total2 = 0; @endphp
                                                 <td class="text-right" style="width: 5%" align="right">
-                                                    <br>
                                                     {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411211')->sum('nilai_pajak'), 0) }} <br>
                                                     {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411121')->sum('nilai_pajak'), 0) }} <br>
                                                     {{ number_format($total2 = $datapajakgurekapsemuaopd->where('akun_pajak', '411122')->sum('nilai_pajak'), 0) }} <br>
@@ -138,9 +135,9 @@
                                     </div>
                                     <div class="col-5" style="width: 15%;">
                                         Palu, {{ now()->format('d M Y') }}<br>
-                                        <td><center><b>PENGGUNA ANGGARAN</b></center></td><br><br><br><br>
-                                        <u><b>{{ $bulanrekapsemuaopd->nama_pa_kpa }}</b></u><br>
-                                        <b>NIP. {{ $bulanrekapsemuaopd->nip_pa_kpa }}</b>
+                                        <td><center><b>{{ $bulanrekapsemuaopd->jabatan_bud_kbud }}</b></center></td><br><br><br><br>
+                                        <u><b>{{ $bulanrekapsemuaopd->nama_bud_kbud }}</b></u><br>
+                                        <b>NIP. {{ $bulanrekapsemuaopd->nip_bud_kbud }}</b>
                                     </div>
                                 </div>
                                     
@@ -157,13 +154,13 @@
         {{-- ################################# Fungsi ################################### --}}
         <script>
         $(document).ready(function(){
-                $("#cetakpdfgurekapsemuaopduser").click(function(e){
-                    var periode2 = $('#periode2').val();
-                    var status22 = $("#status22").val();
+                $("#cetakpdfgurekapsemuaopd").click(function(e){
+                    var periode3 = $('#periode3').val();
+                    var status23 = $("#status23").val();
                     var nama_skpd24 = $("#nama_skpd24").val();
                     // alert( nama_skpd + "" + periode + "" + akun_pajak + "" + status2);
-                    params = "?page=rekaplaporansemuaopduser&periode2=" + periode2 + "&status22=" + status22
-                    window.open("/laporanpajakgurekapsemuaopduser-cetak"+params,"_blank");
+                    params = "?page=rekaplaporansemuaopd&periode3=" + periode3 + "&status23=" + status23
+                    window.open("/laporanpajakgurekapsemuaopd-cetak"+params,"_blank");
                 });
             });
 
@@ -174,8 +171,8 @@
                 var status2 = $("#status2").val();
                 var nama_skpd = $("#nama_skpd").val();
                 // alert( nama_skpd + "" + periode + "" + akun_pajak + "" + status2);
-                params = "?page=downloadexceluser&nama_skpd=" + nama_skpd + "&periode=" + periode + "&akun_pajak=" + akun_pajak + "&status2=" + status2
-                window.open("/laporan.downloadlaporanexceluser"+params,"_blank");
+                params = "?page=downloadexcel&nama_skpd=" + nama_skpd + "&periode=" + periode + "&akun_pajak=" + akun_pajak + "&status2=" + status2
+                window.open("/laporan.downloadlaporanexcel"+params,"_blank");
             });
         });
         </script>

@@ -33,7 +33,7 @@
                         <font style="font-size: 20pt;font-weight: bold;"><center>PEMERINTAH KOTA PALU</center></font>
                         <font style="font-size: 13pt;font-weight: bold;"><center>REKAPITULASI PAJAK REALISASI BELANJA GU</center></font>
                         <font style="font-size: 13pt;font-weight: bold;"><center>{{ $bulanrekap->nama_skpd }}</center></font>
-                        <font style="font-size: 13pt;font-weight: bold;"><center>TAHUN ANGGARAN 2025</center></font>
+                        <font style="font-size: 13pt;font-weight: bold;"><center>Bulan {{ $bulanrekap->periode }} Tahun Anggaran 2025</center></font>
                         <!-- <font style="font-size: 11pt;font-weight:13"><center>Alamat : Jl. Baruga No. 2 No.Tlp : 0451-9384 Kode Pos : 94362</center></font> -->
                     </td>
                 </div>
@@ -74,6 +74,7 @@
 
                                             </td>
                                             <td class="" style="width: 10%">
+                                                {{ $bulanrekap->periode }}<br>
                                                 411211 <br>
                                                 411121 <br>
                                                 411122 <br>
@@ -82,6 +83,7 @@
                                                 411618
                                             </td>
                                             <td class="" style="width: 15%">
+                                                <br>
                                                 Pajak Pertambahan Nilai <br>
                                                 PPh 21 <br>
                                                 Pajak Penghasilan PS 22 <br>
@@ -91,6 +93,7 @@
                                             </td>
                                             @php $total2 = 0; @endphp
                                             <td class="text-right" style="width: 5%" align="right">
+                                                <br>
                                                 {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411211')->sum('nilai_pajak'), 0) }} <br>
                                                 {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411121')->sum('nilai_pajak'), 0) }} <br>
                                                 {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411122')->sum('nilai_pajak'), 0) }} <br>

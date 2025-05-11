@@ -15,13 +15,10 @@
                     <div class="col-8">
                     </div>
                     <div class="col-2">
-                        <button id="cetakpdfgu" target="blank" type="button" class="btn btn-outline-primary m-b-xs text-center" style="text-align: center">
+                        <!-- <button id="cetakpdfguspm" target="blank" type="button" class="btn btn-outline-primary m-b-xs text-center" style="text-align: center">
                             <i class="fa fa-enter"></i>PDF  
-                        </button>
-                        {{-- <button id="cetakexcelgu" target="blank" type="button" class="btn btn-outline-info m-b-xs">
-                            <i class="fa fa-enter"></i>Excel
-                        </button> --}}
-                        <button class="btn btn-outline-info m-b-xs" onclick="tablesToExcel(['tbl1'], ['Pajak_GU'], 'Pajakgu.xls', 'Excel')">
+                        </button> -->
+                        <button class="btn btn-outline-info m-b-xs" onclick="tablesToExcel(['tbl1'], ['Pajak_GU_SPM'], 'Pajakguspm.xls', 'Excel')">
                             <i class="fa fa-enter" ></i>Excel
                         </button>
                     </div>
@@ -36,7 +33,6 @@
                     <div class="col-10 align-middle fw-bold text-center text-uppercase" style=" margin-top: 15px; text-align: center; font-size: 17px; font-weight: bold;">
                         PEMERINTAH KOTA PALU <br>
                         REKAPITULASI PENYETORAN PAJAK GU <br>
-                        {{ $bulan->nama_skpd }} <br>
                         TAHUN ANGGARAN 2025<br>
                     </div>
                     <div class="col-1">
@@ -55,51 +51,40 @@
                                                 <thead class="table-dark">
                                                     <tr>
                                                         <th>No</th>
-                                                        {{-- <th>Nama OPD</th> --}}
+                                                        <th>Nama OPD</th>
                                                         <th>Nomor SPM</th>
-                                                        <th>Tanggal SP2D</th>
-                                                        <th>Nomor SP2D</th>
-                                                        <th>Nilai SP2D</th>
-                                                        <th>Rekening Belanja</th>
-                                                        <th>Akun Pajak</th>
+                                                        <th>Tanggal TBP</th>
+                                                        <th>Nomor TBP</th>
+                                                        <th>Nilai TBP</th>
                                                         <th>Jenis Pajak</th>
-                                                        <th>Nomor NPWP</th>
-                                                        <th>Nama NPWP</th>
                                                         <th>Nilai Pajak</th>
-                                                        <th>E-Biling</th>
-                                                        <th>NTPN</th>
                                                         <th>Ket</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @php $total = 0; @endphp
                                                     @php $no = 1; @endphp
-                                                    @foreach ($datapajakgu as $d )
+                                                    @foreach ($datapajakguspm as $d )
                                                         <tr>
                                                             <td>{{ $no++ }}</td>
-                                                            {{-- <td>{{ $d->nama_skpd }}</td> --}}
-                                                            <td>{{ $d->nomor_spm }}</td>
-                                                            <td>{{ $d->tanggal_sp2d }}</td>
-                                                            <td>{{ $d->nomor_sp2d }}</td>
-                                                            <td>{{ number_format($d->nilai_sp2d) }}</td>
-                                                            <td>{{ $d->rek_belanja }}</td>
-                                                            <td>{{ $d->akun_pajak }}</td>
-                                                            <td>{{ $d->jenis_pajak }}</td>
-                                                            <td>{{ $d->nomor_npwp }}</td>
-                                                            <td>{{ $d->nama_npwp }}</td>
-                                                            <td>{{ number_format($d->nilai_pajak) }}</td>
-                                                            <td>{{ $d->ebilling }}</td>
-                                                            <td>{{ $d->ntpn }}</td>
-                                                            <td>{{ $d->nama_skpd }} - {{ $d->periode }}</td>
+                                                            <td>{{ $d->nama_skpd }}</td>
+                                                            <td>{{ $d->no_spm }}</td>
+                                                            <td>{{ $d->tanggal_tbp }}</td>
+                                                            <td>{{ $d->nomor_tbp }}</td>
+                                                            <td>{{ number_format($d->nilai_tbp) }}</td>
+                                                            <td>{{ $d->nama_pajak_potongan }}</td>
+                                                            <td>{{ number_format($d->nilai_tbp_pajak_potongan) }}</td>
+                                                            <td>{{ $d->status1 }}</td>
+
                                                         </tr>
                                                         
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th colspan="10" style="text-align: right">Total Pajak</th>
+                                                        <th colspan="7" style="text-align: right">Total Pajak</th>
                                             
-                                                        <td style="text-align: right"> {{ number_format($total = $datapajakgu->sum('nilai_pajak'), 0) }}</td>
+                                                        <td style="text-align: right"> {{ number_format($total = $datapajakguspm->sum('nilai_tbp_pajak_potongan'), 0) }}</td>
                                                     </tr>
                                                 </tfoot>
                                             </table>
@@ -113,8 +98,6 @@
                                                 <div class="col-6 align-middle fw-bold text-center" style=" margin-top: 15px; text-align: center; font-size: 17px; font-weight: bold;">
                                                     Palu, {{ now()->format('d M Y') }}<br>
                                                     PENGGUNA ANGGARAN<br><br><br><br><br><br>
-                                                    {{ $bulan->nama_pa_kpa }}<br>
-                                                    NIP. {{ $bulan->nip_pa_kpa }}
                                                 </div>
                                             </div>
 
@@ -135,7 +118,7 @@
         {{-- ################################# Fungsi ################################### --}}
         <script>
         $(document).ready(function(){
-                $("#cetakpdfgu").click(function(e){
+                $("#cetakpdfguspm").click(function(e){
                     var periode = $('#periode').val();
                     var akun_pajak = $("#akun_pajak").val();
                     var status2 = $("#status2").val();
@@ -147,13 +130,12 @@
             });
 
         $(document).ready(function(){
-            $("#cetakexcells").click(function(e){
-                var periode = $('#periode').val();
-                var akun_pajak = $("#akun_pajak").val();
-                var status2 = $("#status2").val();
+            $("#cetakexcelspmgu").click(function(e){
+                var nama_pajak_potongan = $("#nama_pajak_potongan").val();
+                var status1 = $("#status1").val();
                 var nama_skpd = $("#nama_skpd").val();
                 // alert( nama_skpd + "" + periode + "" + akun_pajak + "" + status2);
-                params = "?page=downloadexcel&nama_skpd=" + nama_skpd + "&periode=" + periode + "&akun_pajak=" + akun_pajak + "&status2=" + status2
+                params = "?page=downloadexcel&nama_skpd=" + nama_skpd + "&nama_pajak_potongan=" + nama_pajak_potongan + "&status1=" + status1
                 window.open("/laporan.downloadlaporanexcel"+params,"_blank");
             });
         });
