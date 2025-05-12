@@ -1,4 +1,4 @@
-<div class="modal fade bd-example-modal-xl" id="tambahbpjs" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-xl" id="tambahtaspen" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog modal-xl">
   
         <div class="modal-content">
@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
             </div>
               <div class="modal-body">
-                    <form id="userFormbpjs" name="userFormbpjs" method="POST" action="/dtbpjs/store" enctype="multipart/form-data">
+                    <form id="userFormtaspen" name="userFormbpjs" method="POST" action="/dtbpjs/store" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <input type="hidden" name="id" id="id5">
@@ -17,7 +17,7 @@
                                 <div class="row mb-4">
                                     <div class="col">
                                         
-                                        <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#editBpjssipd" data-bs-dismiss="modal">
+                                        <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#editTaspensipd" data-bs-dismiss="modal">
                                         <i data-feather="search"></i>Tambah Potongan Dari SIPD RI
                                         </button>
                                         {{-- <label><= Tambah Potongan Dari SIPD RI</label> --}}
@@ -85,7 +85,10 @@
                                     </div>
                                     <div class="col">
                                         <label for="akun_pajak">Akun Potongan</label>
-                                        <input type="text" class="form-control" name="akun_potongan" id="akun_potongan" value="" placeholder="" required>
+                                        {{-- <select class="form-select" name="akun_potongan" id="akun_potongan" value="" placeholder="" required> --}}
+                                            <select class="form-select" name="akun_potongan" id="akun_potongan" style="width: 100%" required>
+                                        <option></option>
+                                    </select>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
