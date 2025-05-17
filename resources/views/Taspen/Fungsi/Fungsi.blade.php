@@ -17,10 +17,10 @@
       Render DataTable
       --------------------------------------------
       --------------------------------------------*/
-    var tabelbpjs = $('#tabelbpjs').DataTable({
+    var tabelbpjs = $('#tabeltaspen').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "/tampilbpjs",
+        ajax: "/tampiltaspen",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'akun_potongan', name: 'akun_potongan'},

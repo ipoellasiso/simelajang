@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\File;
 use App\Models\PotonganModel;
 use App\Models\RincianBpjsModel;
 use App\Models\RincianTaspenModel;
+use App\Models\TaspenModel;
 
 class TaspenController extends Controller
 {
@@ -44,12 +45,12 @@ class TaspenController extends Controller
 
         if ($request->ajax()) {
 
-            $databpjs = DB::table('tb_taspen')
-                        ->select('tb_taspen.id_rinciantaspen', 'tb_taspen.ebilling', 'tb_taspen.nomor_npwp', 'tb_taspen.akun_potongan', 'tb_taspen.ntpn', 'tb_taspen.jenis_potongan', 'tb_taspen.rek_belanja','tb_taspen.nama_npwp', 'tb_taspen.id', 'tb_taspen.status1', 'tb_taspen.status2', 'tb_taspen.created_at', 'tb_taspen.bukti_pemby', 'tb_taspen.nilai_potongan', 'tb_taspen.id_taspen')
-                        ->orderBy('tb_taspen.id', 'DESC')
+            $datataspen = DB::table('tb_rinciantaspen')
+                        ->select('tb_rinciantaspen.id_rinciantaspen', 'tb_rinciantaspen.ebilling', 'tb_rinciantaspen.nomor_npwp', 'tb_rinciantaspen.akun_potongan', 'tb_rinciantaspen.ntpn', 'tb_rinciantaspen.jenis_potongan', 'tb_rinciantaspen.rek_belanja','tb_rinciantaspen.nama_npwp', 'tb_rinciantaspen.id', 'tb_rinciantaspen.status1', 'tb_rinciantaspen.status2', 'tb_rinciantaspen.created_at', 'tb_rinciantaspen.bukti_pemby', 'tb_rinciantaspen.nilai_potongan')
+                        ->orderBy('tb_rinciantaspen.id', 'DESC')
                         ->get();
 
-            return Datatables::of($databpjs)
+            return Datatables::of($datataspen)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
                         if($row->status1 == 'Terima')
@@ -71,7 +72,7 @@ class TaspenController extends Controller
                                             Aksi
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" data-id="'.$row->id.'" href="/dttaspen/edit/'.$row->id_rinciantaspen.'">Edit</a></li>
+                                                <li><a class="dropdown-item" data-id="'.$row->id.'" href="/datataspen/edit/'.$row->id_rinciantaspen.'">Edit</a></li>
                                                 <li><a class="deleteTaspen dropdown-item" data-id="'.$row->id.'" href="javascript:void(0)">Delete</a></li>
                                             </ul>
                                         </div>
@@ -276,110 +277,246 @@ class TaspenController extends Controller
         return view('Taspen.CreateTaspen', $data);
     }
 
-    // public function store(Request $request)
-    // {
-    //     $cart = session()->get('cart');
-        
-    //     $id_kelas     = $request->id_kelas;
-    //     $id_tipekelas = $request->id_tipekelas;
+    public function store(Request $request)
+    {
+        $nomoracak = Str::random(10);
+        $total = 0;
+        $cart = session()->get('cart');
 
-    //     foreach($cart as $g){
+        foreach($cart as $g){
 
-    //         $id_siswa = $g['id'];
+            $id_taspen = $g['id'];
 
-    //     }
+        }
 
-    //     $siswakelas = SiswaKelas::leftJoin('tbl_siswa', 'tbl_siswa.id', '=', 'tbl_siswakelas.id_siswa')
-    //                             ->where('id_kelas', $id_kelas)
-    //                             ->where('id_tipekelas', $id_tipekelas)
-    //                             ->where('id_siswa', $id_siswa)
-    //                             ->select('tbl_siswa.nama_siswa')
-    //                             ->first();
+        $noid_taspen = TaspenModel::where('id_taspen', $id_taspen)->where('id', '!=', $id_taspen)->first();
 
-    //     if($siswakelas)
-    //     {
-    //         return redirect()->back()->with('error', '('.$siswakelas->nama_siswa.') Sudah Diinput');
-    //     }
-    //     else
-    //     {
-    //         foreach($cart as $items){
-    
-    //             SiswaKelas::create([
-    //                 'id_siswa'     => $items['id'],
-    //                 'id_kelas'     => $id_kelas,
-    //                 'id_tipekelas' => $id_tipekelas,
-    //             ]);
+        if($noid_taspen)
+        {
+            return redirect()->back()->with(['error'=>'Potongan Taspen sudah ada']);
+        }
+        else
+        {   
+            foreach($cart as $rows){
+                PotonganModel::where('id', $rows)
+                            ->update([
+                                'status1' => '1',
+                                'id_rinciantaspen'    => $nomoracak,
+                                // 'id_pajakkpp' => $request->id_potonganls,
+                                // 'ebilling' => $request->ebilling,
+                            ]);
+            }
+
+            $rinciantaspen = new RincianTaspenModel();
+            $rinciantaspen->id_rinciantaspen  = $nomoracak;
+            $rinciantaspen->ebilling          = $request->ebilling;
+            $rinciantaspen->akun_potongan     = $request->akun_potongan;
+            $rinciantaspen->nama_npwp         = $request->nama_npwp;
+            $rinciantaspen->nomor_npwp        = $request->nomor_npwp;
+            $rinciantaspen->ntpn              = $request->ntpn;
+            $rinciantaspen->rek_belanja       = $request->rek_belanja;
+            // $rincianbpjs->kode_pot          = $request->kode_pot;
+            $rinciantaspen->status1           = 'Terima';
+
+            if ($files = $request->file('bukti_pemby')){
+                $destinationPath = 'app/assets/images/bukti_pemby_potongan/';
+                $profileImage = "Simelajangpotongan" . "-" .date('YmdHis')."-" .$files->getClientOriginalName();
+                $files->move($destinationPath, $profileImage);
+                $rinciantaspen['bukti_pemby'] = "$profileImage";
+            }
+
+            $rinciantaspen->save();
                 
-    //         }
-    //         session()->forget('cart');
-    //         return redirect('/siswakelas')->with('success', 'Data Disimpan');
-    //     }
-    // }
+            foreach($cart as $items){
 
-    // // ======================== EDIT DATA ===================================
+                $total += $items['nilai_pajak'];
 
-    // public function edit($id)
-    // {   
-    //     $userId = Auth::guard('web')->user()->id;
+                $tanggal_sp2d   = $items['tanggal_sp2d'];
+                $nomor_sp2d     = $items['nomor_sp2d'];
+                $nilai_sp2d     = $items['nilai_sp2d'];
+                $jenis_pajak    = $items['jenis_pajak'];
+                $nilai_pajak    = $items['nilai_pajak'];
+
+                TaspenModel::create([
+                    'id_taspen'         => $items['id'],
+                    'tanggal_sp2d'      => $tanggal_sp2d,
+                    'nomor_sp2d'        => $nomor_sp2d,
+                    'nilai_sp2d'        => $nilai_sp2d,
+                    'jenis_potongan'    => $jenis_pajak,
+                    'nilai_potongan'    => $nilai_pajak,
+
+                    'ebilling'          => $request->ebilling,
+                    'akun_potongan'     => $request->akun_potongan,
+                    'nama_npwp'         => $request->nama_npwp,
+                    'nomor_npwp'        => $request->nomor_npwp,
+                    'ntpn'              => $request->ntpn,
+                    'rek_belanja'       => $request->rek_belanja,
+                    // 'bukti_pemby'       => $profileImage,
+                    'status1'           => 'Terima',
+                    'id_rinciantaspen'    => $nomoracak,
+
+                ]);
+            }
+
+            RincianTaspenModel::where('id', $rinciantaspen->id)->update(['nilai_potongan' => $total]);
+            session()->forget('cart');
+            return redirect('/tampiltaspen')->with('success', 'Data Disimpan');
+        }
+    }
+
+    // ======================== EDIT DATA ===================================
+
+    public function edit($id)
+    {
+
+        $userId = Auth::guard('web')->user()->id;
+        $data = array(
+            'title'                => 'Edit Potongan TASPEN',
+            'active_side_potbpjs'  => 'active',
+            'active_potbpjs'       => 'active',
+            'page_title'           => 'Penatausahaan',
+            'breadcumd1'           => 'edit Potongan',
+            'breadcumd2'           => 'TASPEN',
+            'userx'                => UserModel::where('id',$userId)->first(['fullname','role','gambar',]),
+            'opd'                  => DB::table('users')
+                                    // ->join('opd',  'opd.id', 'users.id_opd')
+                                    // ->select('fullname','nama_opd')
+                                    ->where('nama_opd', auth()->user()->nama_opd)
+                                    ->first(),
+
+            'dttaspen'               => DB::table('tb_taspen')
+                                        ->select('tb_taspen.akun_potongan', 'tb_taspen.nilai_potongan', 'sp2d.tanggal_sp2d', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'potongan2.jenis_pajak', 'tb_taspen.id')
+                                        ->join('potongan2', 'potongan2.id', 'tb_taspen.id_taspen')
+                                        ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
+                                        ->where('tb_taspen.id_rinciantaspen', $id)
+                                        ->get(),
+            'dtrinciantaspen'        => DB::table('tb_rinciantaspen AS a')
+                                        ->select('a.ebilling', 'a.ntpn', 'a.akun_potongan', 'a.nilai_potongan', 'a.bukti_pemby', 'a.id', 'a.id_rinciantaspen')
+                                        ->where('a.id_rinciantaspen', $id)
+                                        ->first(),
+        );
+        // dd($data);
+
+        return view('Taspen.Modal.EditTaspen', $data);
+    }
+
+    public function pilihtaspensipdedit(Request $request)
+    {
+
+        if ($request->ajax()) {
+
+            $datataspensipd = DB::table('potongan2')
+                            ->select('potongan2.ebilling', 'potongan2.id', 'potongan2.status1', 'sp2d.tanggal_sp2d', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'sp2d.npwp_pihak_ketiga', 'sp2d.no_rek_pihak_ketiga', 'potongan2.jenis_pajak', 'potongan2.nilai_pajak')
+                            ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
+                            ->whereIn('potongan2.jenis_pajak', ['Askes', 'Iuran Jaminan Kesehatan 4%', 'Belanja Iuran Jaminan Kesehatan PPPK', 'Belanja Iuran Jaminan Kesehatan PNS', 'Iuran Wajib Pegawai 1%'])
+                            ->where('potongan2.status1',['0'])
+                            ->where('sp2d.jenis',['LS'])
+                            ->get();
+
+            return Datatables::of($datataspensipd)
+                    ->addIndexColumn()
+                    ->addColumn('status1', function($row){
+                        $btn1 = '
+                                    <button href="javascript:void(0)" id="add_cart" 
+                                    data-id1="'.$row->id.'"
+                                    data-tanggal_sp2d1="'.$row->tanggal_sp2d.'" 
+                                    data-nomor_sp2d1="'.$row->nomor_sp2d.'" 
+                                    data-nilai_sp2d1="'.$row->nilai_sp2d.'" 
+                                    data-jenis_pajak1="'.$row->jenis_pajak.'" 
+                                    data-nilai_pajak1="'.$row->nilai_pajak.'" 
+                                    
+                                    class="editpotcartsipdtaaspen btn btn-outline-info m-b-xs btn-sm">Pilih
+                                    </button>
+                                ';
+
+                        return $btn1;
+                    })
+                    ->addColumn('nilai_pajak1', function($row) {
+                        return number_format($row->nilai_pajak);
+                    })
+                    ->addColumn('nilai_sp2d1', function($row1) {
+                        return number_format($row1->nilai_sp2d);
+                    })
+                    ->rawColumns(['status1', 'nilai_pajak1', 'nilai_sp2d1'])
+                    ->make(true);
+        }
+
+        return view('Taspen.Modal.EditTaspen');
+    }
+
+    public function storedetailedit(Request $request)
+    {
+
+        $cek   = RincianTaspenModel::where('id_rinciantaspen', $request->id_rinciantaspen)
+                                ->first(); 
+
+        if($cek)
+        {
+            return redirect()->back()->with('error', 'Data Taspen Sudah Di Ada');
+        }
+        else
+        {
+            RincianTaspenModel::create([
+                // 'id_gurumapelheader' => $request->id_gurumapelheader,
+                // 'id_mapel'           => $request->id_mapel,
+            ]);
+            
+            return redirect()->back();
+        }
         
-    //     $data = array(
-    //         'title'       => 'Edit Data Siswa Kelas',
-    //         'active_siswakelas' => 'active',
-    //         'page_title'  => 'Edit Data Siswa Kelas',
-    //         'breadcumd1'  => 'Edit Data',
-    //         'breadcumd2'  => 'Siswa Kelas',
-    //         'userx'       => User::where('id', $userId)->first(['name','role','foto']),
-    //         'siswakelas'  => DB::table('tbl_siswakelas AS TSK')
-    //                             ->leftJoin('tbl_siswa AS TS', 'TS.id', '=', 'TSK.id_siswa')
-    //                             ->leftJoin('tbl_kelas AS TK', 'TK.id', '=', 'TSK.id_kelas')
-    //                             ->leftJoin('tbl_tipekelas AS TPK', 'TPK.id', '=', 'TSK.id_tipekelas')
-    //                             ->select('TSK.id', 'TSK.id_siswa', 'TSK.id_kelas', 'TSK.id_tipekelas', 
-    //                                     'TS.nama_siswa', 'TK.nama_kelas', 'TPK.nama_tipekelas')
-    //                             ->where('TSK.id', $id)
-    //                             ->first(),
-    //     );
+    }
 
-    //     return view('admin.siswakelas.edit', $data);
-    // }
+    public function update(Request $request, $id)
+    {
+        $cek       = RincianTaspenModel::where('id_rinciantaspen', $request->id_rinciantaspen)->where('id', '!=', $id)->first();
+        $rinciantaspen = RincianTaspenModel::findOrFail($id);
 
-    // public function update(Request $request, $id)
-    // {
-    //     $siswakelas = SiswaKelas::findOrFail($id);
-    //     $cek        = SiswaKelas::where('id_siswa', $request->id_siswa)
-    //                             ->where('id_kelas', $request->id_kelas)
-    //                             ->where('id_tipekelas', $request->id_tipekelas)
-    //                             ->where('id', '!=', $id)->first();
+        if($cek)
+        {
+            return redirect()->back()->with('error', 'Data Potongan BPJS Sudah Ada');
+        }
+        else 
+        {
+            $rinciantaspen->update([
+                'ebilling'          => $request->ebilling,
+                'akun_potongan'     => $request->akun_potongan,
+                'nama_npwp'         => $request->nama_npwp,
+                'nomor_npwp'        => $request->nomor_npwp,
+                'ntpn'              => $request->ntpn,
+                'rek_belanja'       => $request->rek_belanja,
+                'status1'           => 'Terima',
+            ]);
 
-    //     if($cek)
-    //     {
-    //         return redirect()->back()->with('error', 'Siswa Sudah Dikelas Yang Dipilih');
-    //     }
-    //     else 
-    //     {
-    //         $siswakelas->update([
-    //             'id_siswa'     => $request->id_siswa,
-    //             'id_kelas'     => $request->id_kelas,
-    //             'id_tipekelas' => $request->id_tipekelas,
-    //         ]);
-    //         return redirect('/siswakelas')->with('success', 'Data Berhasil Disimpan');
-    //     }
-    // } 
+            if ($request->file('bukti_pemby')) {
+                if ($rinciantaspen->bukti_pemby){
+                    File::delete('app/assets/images/bukti_pemby_potongan/'.$rinciantaspen->bukti_pemby);
+                }
+                $file = $request->file('bukti_pemby');
+                $nama_file = "Simelajang" . "-" .date('YmdHis')."-" .$file->getClientOriginalName();
+                $file->move('app/assets/images/bukti_pemby_potongan/', $nama_file);
+                $rinciantaspen->bukti_pemby = $nama_file;
+            }
+            
+            $rinciantaspen->save();
+            return redirect('/tampiltaspen')->with('success', 'Data Berhasil Di Ubah');   
+        }
+    }
 
-    // // ======================== DELETE DATA ===================================
+    // ======================== DELETE DATA ===================================
 
-    // public function destroy($id) 
-    // {
-    //     SiswaKelas::where('id',$id)->delete();
+    public function destroy($id) 
+    {
+        TaspenModel::where('id',$id)->delete();
       
-    //     return response()->json(['success'=>'Data Berhasil Dihapus']);
-    // }
+        return response()->json(['success'=>'Data Berhasil Dihapus']);
+    }
 
-    // public function destroyAll() 
-    // {
-    //     SiswaKelas::truncate();
+    public function destroyAll() 
+    {
+        TaspenModel::truncate();
       
-    //     return response()->json(['success'=>'Data Berhasil Dihapus']);
-    // }
+        return response()->json(['success'=>'Data Berhasil Dihapus']);
+    }
 
 
     // Get Data

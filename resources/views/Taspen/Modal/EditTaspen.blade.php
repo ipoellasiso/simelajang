@@ -32,8 +32,8 @@
                                         </div>
                                         <div class="col-4">
                                             <div class="float-end">
-                                                <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editBpjssipdedit" data-bs-dismiss="modal">
-                                                    <i data-feather="search"></i> Tambah Potongan BPJS
+                                                <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#Taspensipd" data-bs-dismiss="modal">
+                                                    <i data-feather="search"></i> Tambah Potongan TASPEN
                                                 </a>
                                             </div>
                                         </div>
@@ -41,7 +41,7 @@
                                     <hr/>
                                         <font style="font-size: 11pt;font-weight: ;"><center>Rincian Potongan</center></font>
                                     <hr/>
-                            <form id="userFormbpjs" name="userFormbpjs" method="POST" action="/dtbpjs/update/{{ $dtrincianbpjs->id }}" enctype="multipart/form-data">
+                            <form id="userFormtaspen" name="userFormtaspen" method="POST" action="/datataspen/update/{{ $dtrinciantaspen->id }}" enctype="multipart/form-data">
                             @csrf
                                 <div class="modal-body">
                                     <table class="display table table-hover" style="width:100%">
@@ -59,7 +59,7 @@
                                         
                                             <tbody>
                                                 @php $no = 1; $total=0; @endphp
-                                                @foreach ($dtbpjs as $d)
+                                                @foreach ($dttaspen as $d)
                                                 @php $total += $d->nilai_potongan @endphp
                                                     <tr>
                                                         <td>{{ $no++ }}</td>
@@ -93,18 +93,18 @@
                                     <div class="row mb-4">
                                         <div class="col">
                                             <label>E-Billing</label>
-                                            <input type="text" class="form-control" name="ebilling" id="ebilling" value="{{ $dtrincianbpjs->ebilling }}" placeholder="">
+                                            <input type="text" class="form-control" name="ebilling" id="ebilling" value="{{ $dtrinciantaspen->ebilling }}" placeholder="">
                                         </div>
                                         <div class="col">
                                             <label>NTPN</label>
-                                            <input type="text" class="form-control" name="ntpn" id="ntpn" value="{{ $dtrincianbpjs->ntpn }}" placeholder="">
+                                            <input type="text" class="form-control" name="ntpn" id="ntpn" value="{{ $dtrinciantaspen->ntpn }}" placeholder="">
                                         </div>
                                     </div>
                                     
                                     <div class="row mb-4">
                                         <div class="col">
                                             <label>Akun Potongan</label>
-                                            <input type="text" class="form-control" name="akun_potongan" id="akun_potongan" value="{{ $dtrincianbpjs->akun_potongan }}" placeholder="">
+                                            <input type="text" class="form-control" name="akun_potongan" id="akun_potongan" value="{{ $dtrinciantaspen->akun_potongan }}" placeholder="">
                                         </div>
                                         <div class="col">
                                             <label>Upload Foto</label>
@@ -119,12 +119,12 @@
                                             <img id="modal-preview" src="https://via/placeholder.com/150" alt="Preview" class="form-group hidden" width="100" height="100">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control" name="id_rincianbpjs" id="id_rincianbpjs" value="{{ $dtrincianbpjs->id_rincianbpjs }}" placeholder="">
+                                            <input type="text" class="form-control" name="id_rincianbpjs" id="id_rincianbpjs" value="{{ $dtrinciantaspen->id_rinciantaspen }}" placeholder="">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="/tampilbpjs" type="button" class="btn btn-outline-danger m-b-xs" data-bs-dismiss="modal">
+                                    <a href="/tampiltaspen" type="button" class="btn btn-outline-danger m-b-xs" data-bs-dismiss="modal">
                                         <i class="fas fa-times-circle"></i> Kembali
                                     </a>
                                     <button type="submit" id="saveBtn" value="create" class="btn btn-outline-primary m-b-xs">
@@ -146,18 +146,19 @@
 
         {{-- ################################# Modal ################################### --}}
         
-        @include('Bpjs.Modal.Tambah')
+        @include('Taspen.Modal.DataTaspen')
+        {{-- @include('Bpjs.Modal.Tambah')
         @include('Bpjs.Modal.Databpjsedit')
         @include('Bpjs.Modal.Terima')
-        @include('Bpjs.Modal.Tolak')
+        @include('Bpjs.Modal.Tolak') --}}
 
         {{-- ############################## Batas Modal ################################ --}}
 
         {{-- ################################# Fungsi ################################### --}}
-
-        @include('Bpjs.Fungsi.Fungsi')
+        @include('Taspen.Fungsi.Fungsitaspensipd')
+        {{-- @include('Bpjs.Fungsi.Fungsi')
         @include('Bpjs.Fungsi.Fungsibpjssipd')
-        @include('Bpjs.Fungsi.Fungsibpjssipdedit')
+        @include('Bpjs.Fungsi.Fungsibpjssipdedit') --}}
 
         {{-- ############################## Batas Fungsi ################################ --}}
         

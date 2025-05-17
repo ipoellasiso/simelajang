@@ -26,7 +26,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="modal-body">
-                                    <form id="userFormtaspen" name="userFormtaspen" method="POST" action="/dtbpjs/store" enctype="multipart/form-data">
+                                    <form id="userFormtaspen" name="userFormtaspen" method="POST" action="/datataspen/store" enctype="multipart/form-data">
                                         @csrf
                                         <br><br>
                                         <div class="modal-body">
@@ -104,9 +104,7 @@
                                                     <div class="col">
                                                         <label for="akun_pajak">Akun Potongan</label>
                                                         {{-- <select class="form-select" name="akun_potongan" id="akun_potongan" value="" placeholder="" required> --}}
-                                                            <select class="form-select" name="akun_potongan" id="akun_potongan" style="width: 100%" required>
-                                                        <option></option>
-                                                    </select>
+                                                            <input type="text" class="form-control" name="akun_potongan" id="akun_potongan" value="" placeholder="" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">

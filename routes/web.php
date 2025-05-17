@@ -296,26 +296,7 @@ Route::get('/datataspen/edit/{id}', [TaspenController::class, 'edit'])->middlewa
 Route::post('/datataspen/update/{id}', [TaspenController::class, 'update'])->middleware('auth:web','checkRole:Admin');
 Route::delete('/datataspen/destroy/{id}', [TaspenController::class, 'destroy'])->middleware('auth:web','checkRole:Admin');
 Route::delete('/datataspen/destroyAll', [TaspenController::class, 'destroyAll'])->middleware('auth:web','checkRole:Admin');
-
-// Route::get('/tampilbpjssipd', [BpjsController::class, 'pilihbpjssipd'])->middleware('auth:web','checkRole:Admin');
-// Route::get('/tampilbpjssipdedit', [BpjsController::class, 'pilihbpjssipdedit'])->middleware('auth:web','checkRole:Admin');
-// Route::post('/dtbpjs/store', [BpjsController::class, 'store'])->middleware('auth:web','checkRole:Admin');
-// Route::get('/dtbpjs/detail/{id}', [BpjsController::class, 'detail'])->middleware('auth','checkRole:Admin');
-// Route::get('/dtbpjs/cetak/{id}', [BpjsController::class, 'cetak'])->middleware('auth','checkRole:Admin');
-// Route::get('/dtbpjs/edit/{id}', [BpjsController::class, 'edit'])->middleware('auth','checkRole:Admin');
-// Route::get('/dtbpjs/destroyDetail/{id}', [BpjsController::class, 'destroyDetail'])->middleware('auth:web','checkRole:Admin');
-// Route::delete('/dtbpjs/destroy/{id}', [BpjsController::class, 'destroy'])->middleware('auth:web','checkRole:Admin');
-// Route::post('/dtbpjs/update/{id}', [BpjsController::class, 'update'])->middleware('auth:web','checkRole:Admin');
+Route::post('/datataspen/storedetailedit', [TaspenController::class, 'storedetailedit'])->middleware('auth:web','checkRole:Admin');
 
 Route::get('/datataspen/show_cart', [TaspenController::class, 'show_cart'])->middleware('auth','checkRole:Admin');
-// // Route::post('/barangmasuk/addToCart/{id}', [BpjsController::class, 'addToCart'])->middleware('auth','checkRole:Admin');
-// // Route::get('/dtbpjs/load_cart', [BpjsController::class, 'load_cart'])->middleware('auth:web','checkRole:Admin');
-// Route::post('/dtbpjs/addToCart', [BpjsController::class, 'addToCart'])->middleware('auth:web','checkRole:Admin');
-// Route::post('/dtbpjs/deleteCart/{id}', [BpjsController::class, 'deleteCart'])->middleware('auth:web','checkRole:Admin');
-// Route::get('/dtbpjs/editpotcart/{id}', [BpjsController::class, 'editpotcartsipd'])->middleware('auth:web','checkRole:Admin');
-
-// Route::get('/dtbpjs/ubah/{id}', [BpjsController::class, 'ubahbpjs'])->middleware('auth:web','checkRole:Admin');
-// Route::get('/dtbpjs/tolakbpjs/{id}', [BpjsController::class, 'tolakbpjs'])->middleware('auth:web','checkRole:Admin');
-// Route::post('/dtbpjs/tolakbpjsupdate/{id}', [BpjsController::class, 'tolakbpjsupdate'])->middleware('auth:web','checkRole:Admin');
-// Route::get('/dtbpjs/terimabpjs/{id}', [BpjsController::class, 'terimabpjs'])->middleware('auth:web','checkRole:Admin');
-// Route::post('/dtbpjs/terimabpjsupdate/{id}', [BpjsController::class, 'terimabpjsupdate'])->middleware('auth:web','checkRole:Admin');
+Route::get('/tampiltaspensipdedit', [TaspenController::class, 'pilihtaspensipdedit'])->middleware('auth:web','checkRole:Admin');

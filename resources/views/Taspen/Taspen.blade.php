@@ -43,7 +43,7 @@
                                         </div>
                                     </div>
 
-                                    <table id="tabelbpjs" class="display table table-hover" style="width:100%">
+                                    <table id="tabeltaspen" class="display table table-hover" style="width:100%">
                                         <thead>
                                             <!-- <tr>
                                                 <th rowspan="2">NO</th>
