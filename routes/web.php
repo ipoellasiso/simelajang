@@ -19,6 +19,7 @@ use App\Http\Controllers\PajaklsuserController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\Registersp2dController;
 use App\Http\Controllers\TarikdataController;
+use App\Http\Controllers\TaspenController;
 use App\Http\Controllers\UseradminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerifikasitbpController;
@@ -278,3 +279,24 @@ Route::get('/tampilindekslaporanspmgu1', [LaporanSpmGuController::class, 'index'
 Route::get('/tampilindekslaporanspmgu/{id}/tampilawal', [LaporanSpmGuController::class, 'laporangu'])->name('laporan.laporanguspm.tampil')->middleware('auth:web','checkRole:Admin');
 Route::get('/tampilindekslaporanspmgu/{id}/tampil', [LaporanSpmGuController::class, 'laporangu'])->name('laporan.laporanguspm.tampil')->middleware('auth:web','checkRole:Admin');
 Route::get('/tampilindekslaporanspmgu-cetak', [LaporanSpmGuController::class, 'cetak'])->name('laporanpajakguspm-cetak')->middleware('auth:web','checkRole:Admin');
+
+
+// ======= DATA TASPEN =======
+Route::get('/tampiltaspen', [TaspenController::class, 'index'])->middleware('auth:web','checkRole:Admin');
+Route::get('/datataspen/taspen', [TaspenController::class, 'getdatasp2d'])->middleware('auth:web','checkRole:Admin');
+
+Route::get('/datataspen/create', [TaspenController::class, 'create'])->middleware('auth:web','checkRole:Admin');
+
+Route::get('/datataspen/load_cart', [TaspenController::class, 'load_cart'])->middleware('auth:web','checkRole:Admin');
+Route::post('/datataspen/addToCart', [TaspenController::class, 'addToCart'])->middleware('auth:web','checkRole:Admin');
+Route::post('/datataspen/deleteCart/{id}', [TaspenController::class, 'deleteCart'])->middleware('auth:web','checkRole:Admin');
+
+Route::post('/datataspen/store', [TaspenController::class, 'store'])->middleware('auth:web','checkRole:Admin');
+Route::get('/datataspen/edit/{id}', [TaspenController::class, 'edit'])->middleware('auth:web','checkRole:Admin');
+Route::post('/datataspen/update/{id}', [TaspenController::class, 'update'])->middleware('auth:web','checkRole:Admin');
+Route::delete('/datataspen/destroy/{id}', [TaspenController::class, 'destroy'])->middleware('auth:web','checkRole:Admin');
+Route::delete('/datataspen/destroyAll', [TaspenController::class, 'destroyAll'])->middleware('auth:web','checkRole:Admin');
+Route::post('/datataspen/storedetailedit', [TaspenController::class, 'storedetailedit'])->middleware('auth:web','checkRole:Admin');
+
+Route::get('/datataspen/show_cart', [TaspenController::class, 'show_cart'])->middleware('auth','checkRole:Admin');
+Route::get('/tampiltaspensipdedit', [TaspenController::class, 'pilihtaspensipdedit'])->middleware('auth:web','checkRole:Admin');

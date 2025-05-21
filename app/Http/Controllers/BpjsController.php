@@ -167,8 +167,7 @@ class BpjsController extends Controller
 
         return view('Bpjs.Bpjs');
     }
-
-    public function pilihbpjssipdedit(Request $request)
+public function pilihbpjssipdedit(Request $request)
     {
 
         if ($request->ajax()) {
@@ -211,6 +210,7 @@ class BpjsController extends Controller
 
         return view('Bpjs.Bpjs');
     }
+    
 
     public function detail($id)
     {

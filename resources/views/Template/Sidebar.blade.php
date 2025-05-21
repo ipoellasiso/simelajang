@@ -110,7 +110,7 @@
         <a href="index.html"><i data-feather="user"></i>Data Potongan<i class="fas fa-chevron-right dropdown-icon"></i></a>
         <ul class="">
           <li><a href="/tampilbpjs"><i class="far fa-circle"></i>BPJS</a></li>
-          <li><a href="#"><i class="far fa-circle"></i>TASPEN</a></li>
+          <li><a href="/tampiltaspen"><i class="far fa-circle"></i>TASPEN</a></li>
         </ul>
       </li>
       @endif

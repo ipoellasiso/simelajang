@@ -36,14 +36,14 @@
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="javascript:void(0)" id="createBpjs" data-toggle="tooltip" data-placement="top" title="klik"> Tambah </a>
-                                                    <a class="dropdown-item" href="javascript:void(0)" id="uploadBpjs" data-toggle="tooltip" data-placement="top" title="klik"> Upload </a>
+                                                    <a class="dropdown-item" href="/datataspen/create" id="createTaspenoff" data-toggle="tooltip" data-placement="top" title="klik"> Tambah </a>
+                                                    <a class="dropdown-item" href="javascript:void(0)" id="uploadTaspen" data-toggle="tooltip" data-placement="top" title="klik"> Upload </a>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <table id="tabelbpjs" class="display table table-hover" style="width:100%">
+                                    <table id="tabeltaspen" class="display table table-hover" style="width:100%">
                                         <thead>
                                             <!-- <tr>
                                                 <th rowspan="2">NO</th>
@@ -91,24 +91,26 @@
         </div>
 
         {{-- ################################# Modal ################################### --}}
-        
-        @include('Bpjs.Modal.Tambah')
+        @include('Taspen.Modal.Tambah')
+        @include('Taspen.Modal.DataTaspen')
+
+        {{-- @include('Bpjs.Modal.Tambah')
         @include('Bpjs.Modal.Databpjs')
         @include('Bpjs.Modal.Terima')
         @include('Bpjs.Modal.Tolak')
         @include('Bpjs.Modal.Ubah')
-        @include('Bpjs.Modal.Databpjsedit')
+        @include('Bpjs.Modal.Databpjsedit') --}}
 
         {{-- ############################## Batas Modal ################################ --}}
 
         {{-- ################################# Fungsi ################################### --}}
+        @include('Taspen.Fungsi.Fungsi')
 
-        @include('Bpjs.Fungsi.Fungsi')
-        @include('Bpjs.Fungsi.Fungsibpjssipd')
-        @include('Bpjs.Fungsi.Fungsibpjssipdedit')
+        {{-- @include('Bpjs.Fungsi.Fungsi') --}}
+        {{-- @include('Bpjs.Fungsi.Fungsibpjssipd')
+        @include('Bpjs.Fungsi.Fungsibpjssipdedit') --}}
 
         {{-- ############################## Batas Fungsi ################################ --}}
-        
         
         <!-- Javascripts -->
         @include('Template.Script')

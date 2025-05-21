@@ -1,4 +1,4 @@
-<div class="modal fade bd-example-modal-xl" id="editBpjssipd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-xl" id="editTaspensipd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -18,7 +18,7 @@
                         </div>
                         {{-- class="m-t-25" --}}
                         <div class="table-responsive">
-                            <table id="tabelbpjssipdri" class="table table-hover" style="width:100%">
+                            <table id="tblTaspen" class="table table-hover" style="width:100%">
                                 <thead>
                                     <tr>
                                         <!-- <th class="text-center">No</th> -->
@@ -42,8 +42,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark m-b-xs" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#tambahbpjs">
-                    <i class="fas fa-arrow-alt-circle-left"></i> Kembali
+                <button type="button" class="btn btn-outline-danger m-b-xs" data-bs-dismiss="modal">
+                    <i class="fas fa-times-circle"></i> Close
                 </button>
                 {{-- <button type="submit" id="saveBtn" value="create" class="btn btn-secondary">
                     <i class="fa fa-save"></i>  Simpan

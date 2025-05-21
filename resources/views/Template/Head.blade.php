@@ -18,7 +18,7 @@
         <link href="/theme/assets/plugins/font-awesome/css/all.min.css" rel="stylesheet">
         <link href="/theme/assets/plugins/perfectscroll/perfect-scrollbar.css" rel="stylesheet">
         <link href="/theme/assets/plugins/DataTables/datatables.min.css" rel="stylesheet">   
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
       
         <!-- Theme Styles -->
         <link href="/theme/assets/css/main.min.css" rel="stylesheet">
@@ -33,5 +33,8 @@
         {{-- <script src="/theme/assets/plugins/DataTables/datatables.min.js"></script> --}}
         {{-- <script src="/theme/assets/js/main.min.js"></script> --}}
         {{-- <script src="/theme/assets/js/pages/datatables.js"></script> --}}
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
         

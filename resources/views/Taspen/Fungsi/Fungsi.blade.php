@@ -17,10 +17,10 @@
       Render DataTable
       --------------------------------------------
       --------------------------------------------*/
-    var tabelbpjs = $('#tabelbpjs').DataTable({
+    var tabelbpjs = $('#tabeltaspen').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "/tampilbpjs",
+        ajax: "/tampiltaspen",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'akun_potongan', name: 'akun_potongan'},
@@ -33,11 +33,11 @@
     });
 
     // tambah data
-    $('#createBpjs').click(function (){
-        $('#saveBtn').val("create-bpjs");
+    $('#createTaspen').click(function (){
+        $('#saveBtn').val("create-Taspen");
         $('#id').val('');
-        $('#userFormbpjs').trigger("reset");
-        $('#tambahbpjs').modal('show');
+        $('#userFormtaspen').trigger("reset");
+        $('#tambahtaspen').modal('show');
         $('#modal-preview').attr('src', 'https://via/placeholder.com/150');
 
     });
@@ -233,6 +233,30 @@
         $('.amount').on('keyup', function(e) {
             $(this).val(formatRupiah($(this).val(), ' '));
         });
+    });
+
+    
+    $('#carisp2d').select2({
+	    placeholder: "Pilih Sp2d",
+    	allowClear: true,
+        dropdownParent: $('#editTaspensipd'),
+	    ajax: { 
+            url: "/datataspen/taspen",
+            type: "Get",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    searchSp2d: params.term // search term
+                };
+            },
+            processResults: function (response) {
+                return {
+                    results: response
+                };
+            },
+                cache: true
+            }
     });
 
 });
