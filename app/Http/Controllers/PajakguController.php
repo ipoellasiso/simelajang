@@ -306,7 +306,7 @@ class PajakguController extends Controller
                 'status3' => '1',
                 'status4' => 'Input',
                 // 'id_pajakkpp' => $request->id_potonganls,
-                // 'ebilling' => $request->ebilling,
+                // 'id_billing' => $request->id_billing,
             ]);
 
             $detailspajakgu = [
@@ -368,6 +368,20 @@ class PajakguController extends Controller
                             'ntpn' => $request->ntpn,
                             'akun_pajak' => $request->akun_pajak,
                         ]);
+            
+            PotonganguModel::where('id_billing',$request->get('ebilling'))
+            ->update([
+                'status3' => '1',
+                'status4' => 'Input',
+                // 'id_pajakkpp' => $request->id_potonganls,
+                'id_billing' => $request->ebilling,
+            ]);
+
+            // PotonganguModel::where('id_billing',$request->get('ebilling'))
+            //                 ->update([
+            //                 'status3' => '0',
+            //                 'status4' => 'TolakInput',
+            // ]);
 
             // $updatepajakgu->id_potonganls = $request->get('id_potonganls');
             $updatepajakgu->akun_pajak = $request->get('akun_pajak');
