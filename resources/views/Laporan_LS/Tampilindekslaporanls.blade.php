@@ -101,12 +101,12 @@
                                                                 <option value="Feb">Feb</option>
                                                                 <option value="Mar">Mar</option>
                                                                 <option value="Apr">Apr</option>
-                                                                <option value="Mei">Mei</option>
+                                                                <option value="Mei">May</option>
                                                                 <option value="Jun">Jun</option>
                                                                 <option value="Jul">Jul</option>
-                                                                <option value="Agu">Agu</option>
+                                                                <option value="Agu">Aug</option>
                                                                 <option value="Sep">Sep</option>
-                                                                <option value="Okt">Okt</option>
+                                                                <option value="Okt">Oct</option>
                                                                 <option value="Nov">Nov</option>
                                                                 <option value="Des">Des</option>
                                                             </select>
@@ -120,12 +120,12 @@
                                                                 <option value="Feb">Feb</option>
                                                                 <option value="Mar">Mar</option>
                                                                 <option value="Apr">Apr</option>
-                                                                <option value="Mei">Mei</option>
+                                                                <option value="Mei">May</option>
                                                                 <option value="Jun">Jun</option>
                                                                 <option value="Jul">Jul</option>
-                                                                <option value="Agu">Agu</option>
+                                                                <option value="Agu">Aug</option>
                                                                 <option value="Sep">Sep</option>
-                                                                <option value="Okt">Okt</option>
+                                                                <option value="Okt">Oct</option>
                                                                 <option value="Nov">Nov</option>
                                                                 <option value="Des">Des</option>
                                                             </select>
@@ -139,12 +139,12 @@
                                                                 <option value="Feb">Feb</option>
                                                                 <option value="Mar">Mar</option>
                                                                 <option value="Apr">Apr</option>
-                                                                <option value="Mei">Mei</option>
+                                                                <option value="Mei">May</option>
                                                                 <option value="Jun">Jun</option>
                                                                 <option value="Jul">Jul</option>
-                                                                <option value="Agu">Agu</option>
+                                                                <option value="Agu">Aug</option>
                                                                 <option value="Sep">Sep</option>
-                                                                <option value="Okt">Okt</option>
+                                                                <option value="Okt">Oct</option>
                                                                 <option value="Nov">Nov</option>
                                                                 <option value="Des">Des</option>
                                                             </select>
