@@ -68,6 +68,7 @@
                                                         <th>E-Biling</th>
                                                         <th>NTPN</th>
                                                         <th>Ket</th>
+                                                        <th>Per</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -90,6 +91,7 @@
                                                             <td>{{ $d->ebilling }}</td>
                                                             <td>{{ $d->ntpn }}</td>
                                                             <td>{{ $d->nama_skpd }} - {{ $d->periode }}</td>
+                                                            <td>{{ $d->periode }}</td>
                                                         </tr>
                                                         
                                                     @endforeach
