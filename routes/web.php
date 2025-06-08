@@ -11,6 +11,8 @@ use App\Http\Controllers\LaporanguuserController;
 use App\Http\Controllers\LaporanlsController;
 use App\Http\Controllers\LaporanlsControllerUser;
 use App\Http\Controllers\LaporanSpmGuController;
+use App\Http\Controllers\LaprekappajakController;
+use App\Http\Controllers\LaprekappajaklsguController;
 use App\Http\Controllers\OpdController;
 use App\Http\Controllers\PajakguadminController;
 use App\Http\Controllers\PajakguController;
@@ -300,3 +302,12 @@ Route::post('/datataspen/storedetailedit', [TaspenController::class, 'storedetai
 
 Route::get('/datataspen/show_cart', [TaspenController::class, 'show_cart'])->middleware('auth','checkRole:Admin');
 Route::get('/tampiltaspensipdedit', [TaspenController::class, 'pilihtaspensipdedit'])->middleware('auth:web','checkRole:Admin');
+
+// ======= LAPORAN REKAP PAJAK LS GU =======
+Route::get('/tampilindekslaporanrekappajak', [LaprekappajaklsguController::class, 'index'])->name('laporan.Rekap.index')->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilindekslaporanrekappajak/{id}/tampilawal', [LaprekappajaklsguController::class, 'Rekappajak'])->name('laporan.Rekappajak.tampil')->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilindekslaporanrekappajak/{id}/tampil', [LaprekappajaklsguController::class, 'Rekappajak'])->name('laporan.Rekappajak.tampil')->middleware('auth:web','checkRole:Admin');
+Route::get('/laporanrekappajak/opd', [LaprekappajaklsguController::class, 'getDataopd'])->middleware('auth:web','checkRole:Admin');
+Route::get('/laporanrekappajak-cetak', [LaprekappajaklsguController::class, 'cetak'])->name('laporanrekappajak-cetak')->middleware('auth:web','checkRole:Admin');
+
+Route::get('/downloadlaporanrekappajakexcel', [LaprekappajaklsguController::class, 'Exportexcells'])->name('laporan.downloadlaporanrekappajakexcel')->middleware('auth:web','checkRole:Admin');
