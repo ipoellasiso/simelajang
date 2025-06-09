@@ -9,8 +9,8 @@
               <div class="modal-body">
                     <form id="userForm" name="userForm" enctype="multipart/form-data">
                         <div class="modal-body">
-                            <input type="text" name="id" id="id5">
-                            <input type="text" name="id_potonganls" id="id_potonganls5">
+                            <input type="hidden" name="id" id="id5">
+                            <input type="hidden" name="id_potonganls" id="id_potonganls5">
                             <div class="row">
                                 <div class="row mb-4">
                                     <div class="col">

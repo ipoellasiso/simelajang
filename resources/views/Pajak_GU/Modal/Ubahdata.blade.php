@@ -38,8 +38,8 @@
                                     <form method="POST" action="/pajakgu/update/{{ $dtpajakgu->id }}" enctype="multipart/form-data">
                                     @csrf
                                         <div class="modal-body">
-                                            <input type="text" name="id" value="{{ $dtpajakgu->id }}">
-                                            <input type="text" name="id_potonganls" value="{{ $dtpajakgu->id_potonganls }}">
+                                            <input type="hidden" name="id" value="{{ $dtpajakgu->id }}">
+                                            <input type="hidden" name="id_potonganls" value="{{ $dtpajakgu->id_potonganls }}">
                                             <input type="hidden" name="id_opd" value="{{ $dtpajakgu->id_opd }}">
                                             {{-- <input type="text" name="id_potongan2" id="id_potongan2"> --}}
                                             <div class="row">
