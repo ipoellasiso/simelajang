@@ -60,7 +60,7 @@
         $.get("/pajakgusipd/edit/"+iduser, function (data) {
             $('#saveBtn').val("edit-pajakgu");
             $('#editpajakgusipdajukantbp').modal('show');
-            $('#id5').val(data.id);
+            $('#id_potongan2').val(data.id);
             $('#nomor_spm5').val(data.nomor_spm);
             $('#nomor_sp2d5').val(data.nomor_sp2d);
             $('#akun_pajak5').val(data.akun_pajak);

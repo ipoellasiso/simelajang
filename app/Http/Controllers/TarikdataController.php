@@ -553,7 +553,7 @@ class TarikdataController extends Controller
 
         PotonganguModel::where('id',$request->get('id'))
         ->update([
-            'status1' => 'Tolak',
+            // 'status1' => 'Tolak',
         ]);
 
         return redirect()->back()->with('success','Data Berhasil Ditolak');
@@ -572,7 +572,7 @@ class TarikdataController extends Controller
 
         PotonganguModel::where('id',$request->get('id'))
         ->update([
-            'status1' => 'Terima',
+            // 'status1' => 'Terima',
         ]);
 
         return redirect()->back()->with('success','Data Berhasil Ditolak');

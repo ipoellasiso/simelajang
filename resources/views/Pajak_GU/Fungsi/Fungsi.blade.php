@@ -263,6 +263,7 @@
             // $('#saveBtn').val("edit-pajakls");
             $('#edittolak_modal').modal('show');
             $('#id').val(data.id);
+            $('#id_potonganls').val(data.id_potonganls);
             $('#ntpn').val(data.ntpn);
             $('#ebilling').val(data.ebilling);
         })
@@ -314,6 +315,7 @@
             $('#id1').val(data.id);
             $('#ntpn1').val(data.ntpn);
             $('#ebilling1').val(data.ebilling);
+            $('#id_potonganls1').val(data.id_potonganls);
         })
     });
 

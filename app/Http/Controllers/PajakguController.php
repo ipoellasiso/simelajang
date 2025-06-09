@@ -301,12 +301,12 @@ class PajakguController extends Controller
         }
         else
         {
-            PotonganguModel::where('id_billing',$request->get('id_billing'))
+            PotonganguModel::where('id',$request->get('id'))
             ->update([
                 'status3' => '1',
                 'status4' => 'Input',
-                // 'id_pajakkpp' => $request->id_potonganls,
-                // 'id_billing' => $request->id_billing,
+                'id_billing' => $request->id_billing,
+                'nama_pajak_potongan' => $request->nama_pajak_potongan,
             ]);
 
             $detailspajakgu = [
@@ -323,6 +323,7 @@ class PajakguController extends Controller
                 'status2' => 'Terima',
                 'status1' => 'Terima',
                 'periode' => date('M'),
+                'id_potonganls' => $request->id,
             ];
 
             if ($files = $request->file('bukti_pemby')){
@@ -369,12 +370,13 @@ class PajakguController extends Controller
                             'akun_pajak' => $request->akun_pajak,
                         ]);
             
-            PotonganguModel::where('id_billing',$request->get('ebilling'))
+            PotonganguModel::where('id',$request->get('id_potonganls'))
             ->update([
                 'status3' => '1',
                 'status4' => 'Input',
                 // 'id_pajakkpp' => $request->id_potonganls,
                 'id_billing' => $request->ebilling,
+                'nama_pajak_potongan' => $request->jenis_pajak,
             ]);
 
             // PotonganguModel::where('id_billing',$request->get('ebilling'))
@@ -395,6 +397,7 @@ class PajakguController extends Controller
             $updatepajakgu->nilai_pajak = str_replace('.','', $request->get('nilai_pajak'));
             $updatepajakgu->status2 = 'Terima';
             $updatepajakgu->periode = $request->get('periode');
+            $updatepajakgu->id_potonganls = $request->get('id_potonganls');
             
             
 
@@ -434,8 +437,9 @@ class PajakguController extends Controller
             'dtpajakgu'            => DB::table('pajakkppgu')
                                     ->select('pajakkppgu.ebilling', 'sp2d.tanggal_sp2d', 'pajakkppgu.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkppgu.nomor_npwp', 'pajakkppgu.akun_pajak', 'pajakkppgu.ntpn', 'pajakkppgu.jenis_pajak', 'pajakkppgu.rek_belanja','pajakkppgu.nama_npwp', 'pajakkppgu.id_potonganls', 'pajakkppgu.id', 'pajakkppgu.status2', 'pajakkppgu.created_at', 'pajakkppgu.bukti_pemby', 'sp2d.nilai_sp2d', 'pajakkppgu.nilai_pajak', 'pajakkppgu.id_opd', 'pajakkppgu.periode')
                                     ->join('sp2d', 'sp2d.nomor_spm', 'pajakkppgu.no_spm')
+                                    // ->join('tb_potongangu', 'tb_potongangu.id_billing', 'pajakkppgu.ebilling')
                                     ->where('pajakkppgu.id_opd', auth()->user()->nama_opd)
-                                    ->where('pajakkppgu.id', $id)
+                                    ->where('pajakkppgu.id_pajakkppgu', $id)
                                     ->first(),
                                     
                                     // ->select('pajakkppgu.ebilling', 'sp2d.tanggal_sp2d', 'pajakkppgu.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkppgu.nomor_npwp', 'pajakkppgu.akun_pajak', 'pajakkppgu.ntpn', 'pajakkppgu.jenis_pajak', 'potongan2.nilai_pajak','pajakkppgu.rek_belanja','pajakkppgu.nama_npwp', 'pajakkppgu.id_potonganls', 'pajakkppgu.id', 'potongan2.status1', 'pajakkppgu.status2', 'pajakkppgu.created_at', 'pajakkppgu.bukti_pemby', 'sp2d.nilai_sp2d', 'pajakkppgu.nilai_pajak', 'potongan2.id_pajakkpp', 'pajakkppgu.id_opd')
@@ -540,15 +544,17 @@ class PajakguController extends Controller
     public function tolakguupdate(Request $request, string $id)
     {
 
-        PotonganguModel::where('id_billing',$request->get('ebilling'))
+        PotonganguModel::where('id',$request->get('id_potonganls'))
         ->update([
             'status3' => '0',
-            'status4' => 'TolakInput',
+            'status1' => 'Terima',
+            'status4' => 'Belum',
         ]);
 
-        PajakguModel::where('ebilling',$request->get('ebilling'))
+        PajakguModel::where('id_potonganls',$request->get('id_potonganls'))
         ->update([
             'status2' => 'Tolak',
+            'status1' => 'Tolak',
         ]);
 
             return redirect('tampilpajakgu')->with('success','Data Berhasil Ditolak');
@@ -557,7 +563,7 @@ class PajakguController extends Controller
     public function terimagu($id)
     {
         $where = array('id' => $id);
-        $pajakgusipd = PajakguModel::where($where)->first();
+        $pajakgusipd = PajakguModel::where($where)->first(); 
 
         return response()->json($pajakgusipd);
     }
@@ -565,13 +571,14 @@ class PajakguController extends Controller
     public function terimaguupdate(Request $request, string $id)
     {
 
-        PotonganguModel::where('id_billing',$request->get('ebilling'))
+        PotonganguModel::where('id',$request->get('id_potonganls'))
         ->update([
             'status3' => '1',
             'status4' => 'Input',
+            'status1' => 'Terima',
         ]);
 
-        PajakguModel::where('ntpn',$request->get('ntpn'))
+        PajakguModel::where('id_potonganls',$request->get('id_potonganls'))
         ->update([
             'status2' => 'Terima',
             'status1' => 'Terima',

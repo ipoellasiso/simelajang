@@ -27,14 +27,14 @@
                                     <div class="row mb-4">
                                         <div class="col">
                                             <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editpajakgusipd" data-bs-dismiss="modal">
-                                            <i data-feather="search"></i> Pilih SPM dan SP2D
+                                            <i data-feather="search"></i> Pilih SPM dan SP2Dss
                                             </button>
                                             {{-- <label><= Pilih SPM dan SP2D</label> --}}
                                         </div>
                                     </div>
 
                                     <div class="row mb-4">
-                                        <input id="id5" name="id5" type="hidden" class="form-control" readonly></input>
+                                        <input id="id_potongan2" name="id" type="text" class="form-control" readonly></input>
                                         <div class="col">
                                             <label for="nomor_spm" class="form-label">Nomor SPM </label>
                                             <input id="nomor_spm5" name="nomor_spm" type="text" class="form-control" required readonly></input>
