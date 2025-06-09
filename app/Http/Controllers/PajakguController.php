@@ -439,7 +439,7 @@ class PajakguController extends Controller
                                     ->join('sp2d', 'sp2d.nomor_spm', 'pajakkppgu.no_spm')
                                     // ->join('tb_potongangu', 'tb_potongangu.id_billing', 'pajakkppgu.ebilling')
                                     ->where('pajakkppgu.id_opd', auth()->user()->nama_opd)
-                                    ->where('pajakkppgu.id_pajakkppgu', $id)
+                                    ->where('pajakkppgu.id', $id)
                                     ->first(),
                                     
                                     // ->select('pajakkppgu.ebilling', 'sp2d.tanggal_sp2d', 'pajakkppgu.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkppgu.nomor_npwp', 'pajakkppgu.akun_pajak', 'pajakkppgu.ntpn', 'pajakkppgu.jenis_pajak', 'potongan2.nilai_pajak','pajakkppgu.rek_belanja','pajakkppgu.nama_npwp', 'pajakkppgu.id_potonganls', 'pajakkppgu.id', 'potongan2.status1', 'pajakkppgu.status2', 'pajakkppgu.created_at', 'pajakkppgu.bukti_pemby', 'sp2d.nilai_sp2d', 'pajakkppgu.nilai_pajak', 'potongan2.id_pajakkpp', 'pajakkppgu.id_opd')
