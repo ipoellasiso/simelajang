@@ -38,7 +38,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/t', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
