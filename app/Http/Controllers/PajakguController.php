@@ -397,7 +397,7 @@ class PajakguController extends Controller
             $updatepajakgu->nilai_pajak = str_replace('.','', $request->get('nilai_pajak'));
             $updatepajakgu->status2 = 'Terima';
             $updatepajakgu->periode = $request->get('periode');
-            $updatepajakgu->id_potonganls = $request->get('id_potonganls');
+            // $updatepajakgu->id_potonganls = $request->get('id_potonganls');
             
             
 

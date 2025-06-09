@@ -375,6 +375,15 @@ class PajakguadminController extends Controller
                             'ntpn' => $request->ntpn,
                             'akun_pajak' => $request->akun_pajak,
                         ]);
+            
+            PotonganguModel::where('id',$request->get('id_potonganls'))
+            ->update([
+                'status3' => '1',
+                'status4' => 'Input',
+                // 'id_pajakkpp' => $request->id_potonganls,
+                'id_billing' => $request->ebilling,
+                'nama_pajak_potongan' => $request->jenis_pajak,
+            ]);
 
             // $updatepajakgu->id_potonganls = $request->get('id_potonganls');
             $updatepajakgu->akun_pajak = $request->get('akun_pajak');
@@ -529,13 +538,13 @@ class PajakguadminController extends Controller
     public function tolakguupdateadmin(Request $request, string $id)
     {
 
-        PotonganguModel::where('id_billing',$request->get('ebilling'))
+        PotonganguModel::where('id',$request->get('id_potonganls'))
         ->update([
             'status3' => '0',
             'status4' => 'TolakInput',
         ]);
 
-        PajakguModel::where('ebilling',$request->get('ebilling'))
+        PajakguModel::where('id_potonganls',$request->get('id_potonganls'))
         ->update([
             'status2' => 'Tolak',
             'status1' => 'Tolak',
@@ -555,14 +564,14 @@ class PajakguadminController extends Controller
     public function terimaguupdateadmin(Request $request, string $id)
     {
 
-        PotonganguModel::where('id_billing',$request->get('ebilling'))
+        PotonganguModel::where('id',$request->get('id_potonganls'))
         ->update([
             'status3' => '1',
             'status4' => 'Input',
             
         ]);
 
-        PajakguModel::where('ntpn',$request->get('ntpn'))
+        PajakguModel::where('id_potonganls',$request->get('id_potonganls'))
         ->update([
             'status2' => 'Terima',
             'status1' => 'Terima',

@@ -265,6 +265,7 @@
             // $('#saveBtn').val("edit-pajakls");
             $('#edittolak_modal').modal('show');
             $('#id').val(data.id);
+            $('#id_potonganls3').val(data.id_potonganls);
             $('#ntpn').val(data.ntpn);
             $('#ebilling').val(data.ebilling);
         })
@@ -314,6 +315,7 @@
             // $('#saveBtn').val("edit-pajakls");
             $('#editterima_modal').modal('show');
             $('#id1').val(data.id);
+            $('#id_potonganls4').val(data.id_potonganls);
             $('#ntpn1').val(data.ntpn);
             $('#ebilling1').val(data.ebilling);
         })
