@@ -14,6 +14,7 @@
                           <div class="input-area">
                               <label class="form-label">id</label>
                               <input name="id" type="text" class="form-control" id="id" readonly>
+                              <input name="id_potonganls" type="text" class="form-control" id="id_potonganls" readonly>
                           </div>
     
                           <div class="input-area">

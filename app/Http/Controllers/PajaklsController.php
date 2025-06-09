@@ -346,14 +346,15 @@ class PajaklsController extends Controller
         }
         else
         {
-            PotonganModel::where('id_pajakkpp',$request->get('id_potonganls'))
+            PotonganModel::where('id',$request->get('id_potonganls'))
                         ->update([
                             'status1' => '1',
                             'id_pajakkpp' => $request->id_potonganls,
                             'ebilling' => $request->ebilling,
+                            'jenis_pajak' => $request->jenis_pajak,
                         ]);
 
-            $updatepajakls->id_potonganls = $request->get('id_potonganls');
+            // $updatepajakls->id_potonganls = $request->get('id_potonganls');
             $updatepajakls->akun_pajak = $request->get('akun_pajak');
             $updatepajakls->ebilling = $request->get('ebilling');
             $updatepajakls->ntpn = $request->get('ntpn');
@@ -495,12 +496,12 @@ class PajaklsController extends Controller
     public function tolaklsupdate(Request $request, string $id)
     {
 
-        PotonganModel::where('ebilling',$request->get('ebilling'))
+        PotonganModel::where('id',$request->get('id_potonganls'))
         ->update([
             'status1' => '0',
         ]);
 
-        PajaklsModel::where('ebilling',$request->get('ebilling'))
+        PajaklsModel::where('id_potonganls',$request->get('id_potonganls'))
         ->update([
             'status2' => 'Tolak',
         ]);
@@ -519,12 +520,12 @@ class PajaklsController extends Controller
     public function terimalsupdate(Request $request, string $id)
     {
 
-        PotonganModel::where('ebilling',$request->get('ebilling'))
+        PotonganModel::where('id',$request->get('id_potonganls'))
         ->update([
             'status1' => '1',
         ]);
 
-        PajaklsModel::where('ebilling',$request->get('ebilling'))
+        PajaklsModel::where('id_potonganls',$request->get('id_potonganls'))
         ->update([
             'status2' => 'Terima',
         ]);
