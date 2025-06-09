@@ -34,7 +34,7 @@ https://templatemo.com/tm-569-edu-meeting
 <body>
 
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
+  {{-- <header class="header-area header-sticky">
       <div class="container">
           <div class="row">
               <div class="col-12">
@@ -58,13 +58,13 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
           </div>
       </div>
-  </header>
+  </header> --}}
   <!-- ***** Header Area End ***** -->
 
   <!-- ***** Main Banner Area Start ***** -->
   <section class="section main-banner" id="top" data-section="section1">
       <video autoplay muted loop id="bg-video">
-          {{-- <source src="/login2/assets/images/212.mp4" type="video/mp4" /> --}}
+          <source src="/login2/assets/images/21.mp4" type="video/mp4" />
       </video>
 
       <div class="video-overlay header-text">
@@ -74,7 +74,7 @@ https://templatemo.com/tm-569-edu-meeting
                 <div class="caption">
               <h6><i class="fas fa-hand-paper"></i> Halo Gaes</h6>
               <h2>Selamat Datang Di Simelajang</h2>
-              <p>Sistem Informasi Manajemen Pelaporan Pajak Negara <a rel="nofollow" href="#" target="_blank">(SIMELAJANG)</a>. Sistem ini membantu kita untuk mempercepat Pelaporan Pajak Negara disetiap Belanja Daerah pada SP2D LS dan GU, serta Potongan BPJS dan TASPEN <a rel="nofollow" href="#" target="_blank">Pemerintah Kota Palu</a>.</p>
+              <p>Sistem Informasi Manajemen Pelaporan Pajak Negara <a rel="nofollow" href="#" target="_blank">(SIMELAJANG)</a>. Sistem ini Mempermudah Organisasi Perangkat Daerah (OPD) untuk Mengelola Data Pajak dan Menghasilkan Laporan yang Cepat dan Efektif <a rel="nofollow" href="#" target="_blank">Pemerintah Kota Palu</a>.</p>
               <div class="main-button-red">
                   <div><a href="{{ url('login1') }}">Login</a></div>
               </div>
