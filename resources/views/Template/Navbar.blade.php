@@ -7,7 +7,7 @@
                 </li>
                 <li class="nav-item">
                   <div class="logo">
-                    <img src="/theme/assets/images/logo24.png" width="40px" alt="">
+                    <img src="/theme/assets/images/logo244.png" width="40px" alt="">
                   </div>
                 </li>
                 <li class="nav-item">
