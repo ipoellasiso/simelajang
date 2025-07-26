@@ -102,9 +102,9 @@
                                             </div>
                                             <div class="col-4 align-middle fw-bold text-center" style=" margin-top: 15px; text-align: center; font-size: 17px; font-weight: bold;">
                                                 Palu, {{ now()->format('d M Y') }}<br>
-                                                {{ $cetakbulan->jabatan_bud_kbud }}<br><br><br><br><br><br>
-                                                {{ $cetakbulan->nama_bud_kbud }}<br>
-                                                NIP. {{ $cetakbulan->nip_bud_kbud }}
+                                                <td><center><b>Pengguna Anggaran</b></center></td><br><br><br><br>
+                                                <u><b>{{ $cetakbulan->nama_pa_kpa }}</b></u><br>
+                                                <b>NIP. {{ $cetakbulan->nip_pa_kpa }}</b>
                                             </div>
                                         </div>
 
