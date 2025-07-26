@@ -49,9 +49,9 @@
         var periode2 = $('#periode2').val();
         var status22 = $("#status22").val();
         // var nama_skpd24 = $("#nama_skpd24").val();
-        var tampilawalrekap = '2';
+        var tampilawalrekapsemuaopd = '2';
         $.ajax({
-            url: "{{ route('laporan.pajakls.index') }}" +'/' + tampilawalrekap +'/tampilrekap',
+            url: "{{ route('laporan.pajakls.index') }}" +'/' + tampilawalrekapsemuaopd +'/tampilrekapsemuaopd',
             type: "GET",
             data: 'periode2=' + periode2 + '&status22=' + status22,
                 success: function (data) {

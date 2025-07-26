@@ -222,6 +222,10 @@ Route::get('/downloadlaporanexcel', [LaporanlsController::class, 'Exportexcells'
 Route::get('/tampilindekslaporanls/{id}/tampilawalrekap', [LaporanlsController::class, 'laporanlsrekap'])->name('laporan.laporanlsrekap.tampilrekap')->middleware('auth:web','checkRole:Admin');
 Route::get('/tampilindekslaporanls/{id}/tampilrekap', [LaporanlsController::class, 'laporanlsrekap'])->name('laporan.laporanlsrekap.tampilrekap')->middleware('auth:web','checkRole:Admin');
 
+Route::get('/tampilindekslaporanls/{id}/tampilawalrekapsemuaopd', [LaporanlsController::class, 'laporanlsrekapsemuaopd'])->name('laporan.laporanlsrekapsemuaopd.tampilrekap')->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilindekslaporanls/{id}/tampilrekapsemuaopd', [LaporanlsController::class, 'laporanlsrekapsemuaopd'])->name('laporan.laporanlsrekapsemuaopd.tampilrekap')->middleware('auth:web','checkRole:Admin');
+Route::get('/laporanpajaklsrekapsemuaopd-cetak', [LaporanlsController::class, 'cetakrekaplssemuaopd'])->name('laporanpajaklsrekapsemuaopd-cetak')->middleware('auth:web','checkRole:Admin');
+
 //======== Laporan GU =========
 Route::get('/tampilindekslaporangu', [LaporanguController::class, 'index'])->name('laporan.pajakgu.index')->middleware('auth:web','checkRole:Admin');
 Route::get('/tampilindekslaporangu/{id}/tampilawal', [LaporanguController::class, 'laporangu'])->name('laporan.laporangu.tampil')->middleware('auth:web','checkRole:Admin');
