@@ -68,7 +68,7 @@
                                                         <th>E-Biling</th>
                                                         {{-- <th>NTPN</th> --}}
                                                         {{-- <th>Ket</th> --}}
-                                                        {{-- <th>Per</th> --}}
+                                                        <th>Nama OPD</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -90,9 +90,9 @@
                                                             <td>{{ number_format($d->nilai_pajak) }}</td>
                                                             <td>{{ $d->ebilling }}</td>
                                                             {{-- <td>{{ $d->ntpn }}</td> --}}
-                                                            {{-- <td>{{ $d->nama_skpd }} - {{ $d->periode }}</td> --}}
+                                                            <td>{{ $d->nama_skpd }}</td>
                                                             {{-- <td>{{ $d->periode }}</td> --}}
-                                                            <td>{{ $d->status1 }}</td>
+                                                            {{-- <td>{{ $d->status1 }}</td> --}}
                                                         </tr>
                                                         
                                                     @endforeach

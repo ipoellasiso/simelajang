@@ -76,7 +76,7 @@
                                                         <br>
                                                         <div id="forminput1b">
                                                             <label>Pilih OPD2</label>
-                                                            <select class="form-select" name="nama_skpd24" id="nama_skpd24" value="" required>
+                                                            <select class="form-select" name="nama_skpd244" id="nama_skpd244" value="" required>
                                                                 <option value="">Pilih Semua</option>
                                                             </select>
                                                         </div>

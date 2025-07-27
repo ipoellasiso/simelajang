@@ -59,26 +59,38 @@ class LaprekappajaklsguController extends Controller
             // $bulan = 'Satu'. ' '. $bulan1->periode;
             // $cari_bulan = '';
             
-            $datapajakls = DB::table('sp2d')
-                            ->select('sp2d.tanggal_sp2d', 'sp2d.nomor_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'potongan2.status1',  'sp2d.nilai_sp2d', 'potongan2.nilai_pajak', 'potongan2.id_pajakkpp','sp2d.nama_skpd', 'potongan2.jenis_pajak', 'potongan2.ebilling')
-                            // ->join('potongan2',  'potongan2.id_pajakkpp', 'pajakkpp.id_potonganls')
-                            ->join('potongan2', 'potongan2.id_potongan', 'sp2d.idhalaman')
-                            ->where('potongan2.jenis_pajak', 'PPH 21')
-                            // ->join('pajakkpp', 'pajakkpp.id_potonganls', 'potongan2.id_pajakkpp')
-                            // ->where('sp2d.nama_skpd','like', "%".$request->nama_skpd."%")
-                            // ->where('pajakkpp.periode','like',"%".$request->periode."%")
-                            // ->where('pajakkpp.akun_pajak','like',"%".$request->akun_pajak."%")
-                            // ->where('pajakkpp.status2','like', "%".$request->status2."%")
-                            ->get();               
+            // $datapajakls = DB::table('sp2d')
+            //                 ->select('sp2d.tanggal_sp2d', 'sp2d.nomor_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'potongan2.status1',  'sp2d.nilai_sp2d', 'potongan2.nilai_pajak', 'potongan2.id_pajakkpp','sp2d.nama_skpd', 'potongan2.jenis_pajak', 'potongan2.ebilling')
+            //                 // ->join('potongan2',  'potongan2.id_pajakkpp', 'pajakkpp.id_potonganls')
+            //                 ->join('potongan2', 'potongan2.id_potongan', 'sp2d.idhalaman')
+            //                 ->where('potongan2.jenis_pajak', 'PPH 21')
+            //                 // ->join('pajakkpp', 'pajakkpp.id_potonganls', 'potongan2.id_pajakkpp')
+            //                 // ->where('sp2d.nama_skpd','like', "%".$request->nama_skpd."%")
+            //                 // ->where('pajakkpp.periode','like',"%".$request->periode."%")
+            //                 // ->where('pajakkpp.akun_pajak','like',"%".$request->akun_pajak."%")
+            //                 // ->where('pajakkpp.status2','like', "%".$request->status2."%")
+            //                 ->get(); 
+            
+            $datapajakls = DB::table('pajakkpp')
+                            ->select('pajakkpp.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'pajakkpp.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id_potonganls', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.status2', 'pajakkpp.created_at', 'pajakkpp.bukti_pemby', 'sp2d.nilai_sp2d', 'pajakkpp.nilai_pajak', 'potongan2.id_pajakkpp','sp2d.nama_skpd', 'pajakkpp.periode', 'sp2d.nama_bud_kbud', 'sp2d.jabatan_bud_kbud', 'sp2d.nip_bud_kbud')
+                            ->join('potongan2',  'potongan2.id', 'pajakkpp.id_potonganls')
+                            ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
+
+                            ->whereBetween('sp2d.tanggal_sp2d', [$request->tgl_awal, $request->tgl_akhir])
+                            // ->whereBetween('sp2d.tanggal_sp2d', [$request->tgl_akhir])
+                            ->where('sp2d.nama_skpd','like', "%".$request->nama_skpd244."%")
+                            ->where('pajakkpp.akun_pajak','like',"%".$request->akun_pajak."%")
+                            ->get();
 
             $bulan = DB::table('pajakkpp')
                             ->select('pajakkpp.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'pajakkpp.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id_potonganls', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.status2', 'pajakkpp.created_at', 'pajakkpp.bukti_pemby', 'sp2d.nilai_sp2d', 'pajakkpp.nilai_pajak', 'potongan2.id_pajakkpp','sp2d.nama_skpd', 'pajakkpp.periode', 'sp2d.nama_bud_kbud', 'sp2d.jabatan_bud_kbud', 'sp2d.nip_bud_kbud')
                             ->join('potongan2',  'potongan2.id', 'pajakkpp.id_potonganls')
                             ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
-                            ->where('sp2d.nama_skpd','like', "%".$request->nama_skpd."%")
-                            ->where('pajakkpp.periode','like',"%".$request->periode."%")
+
+                            ->whereBetween('sp2d.tanggal_sp2d', [$request->tgl_awal, $request->tgl_akhir])
+                            // ->whereBetween('sp2d.tanggal_sp2d', [$request->tgl_akhir])
+                            ->where('sp2d.nama_skpd','like', "%".$request->nama_skpd244."%")
                             ->where('pajakkpp.akun_pajak','like',"%".$request->akun_pajak."%")
-                            ->where('pajakkpp.status2','like', "%".$request->status2."%")
                             ->first();
             
             
@@ -90,6 +102,15 @@ class LaprekappajaklsguController extends Controller
                 'bulan' => $bulan,
             ]);
         }
+    }
+
+    public function getDataopd()
+    {
+        $opd = DB::table('opd')
+        ->select('id', 'nama_opd')
+        ->get();
+        return response()->json($opd);
+        // return view('Penatausahaan.Pajakls.Pajakls', compact('akunpajak'));
     }
     
 }

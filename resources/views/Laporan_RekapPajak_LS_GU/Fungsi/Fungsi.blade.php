@@ -17,13 +17,16 @@
         e.preventDefault();
         var tgl_awal = $('#tgl_awal').val();
         var tgl_akhir = $("#tgl_akhir").val();
-        var nama_skpd = $("#nama_skpd").val();
+        var nama_skpd244 = $("#nama_skpd244").val();
         var akun_pajak = $("#akun_pajak").val();
         var tampilawal = '1';
         $.ajax({
             url: "{{ route('laporan.Rekap.index') }}" +'/' + tampilawal +'/tampil',
             type: "GET",
-            data: '&tgl_awal=' + tgl_awal + '&tgl_akhir=' + tgl_akhir + 'nama_skpd=' + nama_skpd + '&akun_pajak=' + akun_pajak,
+            // data: '&tgl_awal=' + tgl_awal + '&tgl_akhir=' + tgl_akhir,
+
+            data: '&tgl_awal=' + tgl_awal + '&tgl_akhir=' + tgl_akhir + '&nama_skpd244=' + nama_skpd244 + '&akun_pajak=' + akun_pajak,
+
                 success: function (data) {
                     $('.tampillaporanrekappajak').html(data);//menampilkan data ke dalam modal
                 }
@@ -83,22 +86,7 @@
             method: 'GET',
             success: function(data) {
                 $.each(data, function(index, opd) {
-                    $('#nama_skpd').append(new Option(opd.nama_opd, opd.nama_opd)); // Ganti 'nama' dengan kolom yang sesuai
-                });
-            },
-            error: function(xhr) {
-                console.error(xhr);
-            }
-        });
-    });
-
-    $(document).ready(function() {
-        $.ajax({
-            url: '/laporanrekappajak/opd',
-            method: 'GET',
-            success: function(data) {
-                $.each(data, function(index, opd) {
-                    $('#nama_skpd24').append(new Option(opd.nama_opd, opd.nama_opd)); // Ganti 'nama' dengan kolom yang sesuai
+                    $('#nama_skpd244').append(new Option(opd.nama_opd, opd.nama_opd)); // Ganti 'nama' dengan kolom yang sesuai
                 });
             },
             error: function(xhr) {
