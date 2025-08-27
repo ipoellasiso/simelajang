@@ -13,6 +13,7 @@ use App\Http\Controllers\LaporanlsControllerUser;
 use App\Http\Controllers\LaporanSpmGuController;
 use App\Http\Controllers\LaprekappajakController;
 use App\Http\Controllers\LaprekappajaklsguController;
+use App\Http\Controllers\LapRekaptppController;
 use App\Http\Controllers\OpdController;
 use App\Http\Controllers\PajakguadminController;
 use App\Http\Controllers\PajakguController;
@@ -223,6 +224,10 @@ Route::get('/downloadlaporanexcel', [LaporanlsController::class, 'Exportexcells'
 Route::get('/tampilindekslaporanls/{id}/tampilawalrekap', [LaporanlsController::class, 'laporanlsrekap'])->name('laporan.laporanlsrekap.tampilrekap')->middleware('auth:web','checkRole:Admin');
 Route::get('/tampilindekslaporanls/{id}/tampilrekap', [LaporanlsController::class, 'laporanlsrekap'])->name('laporan.laporanlsrekap.tampilrekap')->middleware('auth:web','checkRole:Admin');
 
+Route::get('/tampilindekslaporanls/{id}/tampilawalrekapsemuaopd', [LaporanlsController::class, 'laporanlsrekapsemuaopd'])->name('laporan.laporanlsrekapsemuaopd.tampilrekap')->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilindekslaporanls/{id}/tampilrekapsemuaopd', [LaporanlsController::class, 'laporanlsrekapsemuaopd'])->name('laporan.laporanlsrekapsemuaopd.tampilrekap')->middleware('auth:web','checkRole:Admin');
+Route::get('/laporanpajaklsrekapsemuaopd-cetak', [LaporanlsController::class, 'cetakrekaplssemuaopd'])->name('laporanpajaklsrekapsemuaopd-cetak')->middleware('auth:web','checkRole:Admin');
+
 //======== Laporan GU =========
 Route::get('/tampilindekslaporangu', [LaporanguController::class, 'index'])->name('laporan.pajakgu.index')->middleware('auth:web','checkRole:Admin');
 Route::get('/tampilindekslaporangu/{id}/tampilawal', [LaporanguController::class, 'laporangu'])->name('laporan.laporangu.tampil')->middleware('auth:web','checkRole:Admin');
@@ -313,3 +318,8 @@ Route::get('/laporanrekappajak/opd', [LaprekappajaklsguController::class, 'getDa
 Route::get('/laporanrekappajak-cetak', [LaprekappajaklsguController::class, 'cetak'])->name('laporanrekappajak-cetak')->middleware('auth:web','checkRole:Admin');
 
 Route::get('/downloadlaporanrekappajakexcel', [LaprekappajaklsguController::class, 'Exportexcells'])->name('laporan.downloadlaporanrekappajakexcel')->middleware('auth:web','checkRole:Admin');
+
+// ======= DATA SP2D TPP =======
+Route::get('/sp2dtpp', [LapRekaptppController::class, 'index'])->middleware('auth:web','checkRole:Admin');
+Route::get('/sp2dtpp/edit/{id}', [LapRekaptppController::class, 'editsp2dtpp'])->middleware('auth:web','checkRole:Admin');
+Route::post('/sp2dtpp/store', [LapRekaptppController::class, 'store'])->middleware('auth:web','checkRole:Admin');

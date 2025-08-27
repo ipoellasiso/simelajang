@@ -28,12 +28,12 @@
                     <div class="col-8">
                     </div>
                     <div class="col-2">
-                        <button id="cetakpdflsrekap" target="blank" type="button" class="btn btn-outline-primary m-b-xs text-center" style="text-align: center">
+                        <button id="cetakpdflsrekapsemuaopd" target="blank" type="button" class="btn btn-outline-primary m-b-xs text-center" style="text-align: center">
                             <i class="fa fa-enter"></i>PDF  
                         </button>
-                        <button id="cetakexcells" target="blank" type="button" class="btn btn-outline-info m-b-xs">
+                        {{-- <button id="cetakexcells" target="blank" type="button" class="btn btn-outline-info m-b-xs">
                             <i class="fa fa-enter"></i>Excel
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
             
@@ -84,20 +84,38 @@
                                             </tr>
                                             <!-- @php $no=1; @endphp -->
                                             <tr>
-                                                <td style="width: 2%">1</td>
+                                                <td style="width: 2%">
+                                                    1 <br>
+                                                    2 <br>
+                                                    3 <br>
+                                                    4 <br>
+                                                    5 <br>
+                                                    6 <br>
+                                                    7 <br>
+                                                    8 <br>
+                                                    9
+                                                </td>
                                                 <td class="text-center" style="width: 10%">
                                                     411211 <br>
                                                     411121 <br>
                                                     411122 <br>
                                                     411124 <br>
-                                                    411128
+                                                    411128 <br>
+                                                    411618 <br>
+                                                    411619 <br>
+                                                    411212 <br>
+                                                    411222
                                                 </td>
                                                 <td class="text-center" style="width: 15%">
                                                     Pajak Pertambahan Nilai <br>
                                                     PPh 21 <br>
                                                     Pajak Penghasilan PS 22 <br>
                                                     Pajak Penghasilan PS 23 <br>
-                                                    Pajak Penghasilan PS 24 
+                                                    Pajak Penghasilan PS 24 <br>
+                                                    (PPn, PPh 21, PPh 22, Pph 23)<br>
+                                                    (PPn, PPh 21, PPh 22, Pph 23)<br>
+                                                    (PPn, PPh 21, PPh 22, Pph 23)<br>
+                                                    (PPn, PPh 21, PPh 22, Pph 23) 
                                                 </td>
                                                 @php $total2 = 0; @endphp
                                                 <td class="text-right" style="width: 5%" align="right">
@@ -105,7 +123,11 @@
                                                     Rp. {{ number_format($total2 = $datapajaklsrekap->where('akun_pajak', '411121')->sum('nilai_pajak'), 0) }} <br>
                                                     Rp. {{ number_format($total2 = $datapajaklsrekap->where('akun_pajak', '411122')->sum('nilai_pajak'), 0) }} <br>
                                                     Rp. {{ number_format($total2 = $datapajaklsrekap->where('akun_pajak', '411124')->sum('nilai_pajak'), 0) }} <br>
-                                                    Rp. {{ number_format($total2 = $datapajaklsrekap->where('akun_pajak', '411128')->sum('nilai_pajak'), 0) }}
+                                                    Rp. {{ number_format($total2 = $datapajaklsrekap->where('akun_pajak', '411128')->sum('nilai_pajak'), 0) }} <br>
+                                                    Rp. {{ number_format($total2 = $datapajaklsrekap->where('akun_pajak', '411618')->sum('nilai_pajak'), 0) }} <br>
+                                                    Rp. {{ number_format($total2 = $datapajaklsrekap->where('akun_pajak', '411619')->sum('nilai_pajak'), 0) }} <br>
+                                                    Rp. {{ number_format($total2 = $datapajaklsrekap->where('akun_pajak', '411212')->sum('nilai_pajak'), 0) }} <br>
+                                                    Rp. {{ number_format($total2 = $datapajaklsrekap->where('akun_pajak', '411222')->sum('nilai_pajak'), 0) }}
                                                 </td>
                                             </tr>
 
@@ -145,13 +167,13 @@
         {{-- ################################# Fungsi ################################### --}}
         <script>
         $(document).ready(function(){
-                $("#cetakpdflsrekap").click(function(e){
-                    var periode3 = $('#periode3').val();
-                    var status23 = $("#status23").val();
-                    var nama_skpd24 = $("#nama_skpd24").val();
+                $("#cetakpdflsrekapsemuaopd").click(function(e){
+                    var periode2 = $('#periode2').val();
+                    var status22 = $("#status22").val();
+                    // var nama_skpd24 = $("#nama_skpd24").val();
                     // alert( nama_skpd + "" + periode + "" + akun_pajak + "" + status2);
-                    params = "?page=rekaplaporan&nama_skpd24=" + nama_skpd24 + "&periode3=" + periode3 + "&status23=" + status23
-                    window.open("/laporanpajaklsrekap-cetak"+params,"_blank");
+                    params = "?page=rekaplaporansemuaopd&periode2=" + periode2 + "&status22=" + status22
+                    window.open("/laporanpajaklsrekapsemuaopd-cetak"+params,"_blank");
                 });
             });
 

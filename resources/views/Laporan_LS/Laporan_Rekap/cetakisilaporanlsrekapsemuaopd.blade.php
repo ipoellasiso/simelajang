@@ -25,14 +25,13 @@
             <i class="fa fa-enter"></i>PDF   --}}
             <br>
             <div class="row" border="0" align="center" style="width: 200%">
-                <div class="col-1 text-right" align="center" style="width: 5%;  margin-top: 20px;">
+                <div class="col-1 text-right" align="center" style="width: 15%;  margin-top: 15px;">
                     <td colspan="0" style="width: 5%;"><center><img src="/theme/assets/images/13.png" width="80" height="100"></center></td>
                 </div>
-                <div class="col-4 align-middle fw-bold text-center" style="width: 40%; margin-top: 15px; text-align: center; font-size: 17px; font-weight: bold;">
+                <div class="col-4 align-middle fw-bold text-center" style="width: 20%; margin-top: 15px; text-align: center; font-size: 17px; font-weight: bold;">
                     <td colspan="6" style="width: 55%;">
                         <font style="font-size: 20pt;font-weight: bold;"><center>PEMERINTAH KOTA PALU</center></font>
-                        <font style="font-size: 13pt;font-weight: bold;"><center>REKAPITULASI PAJAK REALISASI BELANJA GU</center></font>
-                        <font style="font-size: 13pt;font-weight: bold;"><center>{{ $bulanrekap->nama_skpd }}</center></font>
+                        <font style="font-size: 13pt;font-weight: bold;"><center>REKAPITULASI PAJAK REALISASI BELANJA</center></font>
                         <font style="font-size: 13pt;font-weight: bold;"><center>TAHUN ANGGARAN 2025</center></font>
                         <!-- <font style="font-size: 11pt;font-weight:13"><center>Alamat : Jl. Baruga No. 2 No.Tlp : 0451-9384 Kode Pos : 94362</center></font> -->
                     </td>
@@ -46,7 +45,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                     
-                                <table class="table-bordered" border="1" cellpadding="10" align="center" cellspacing="20" style="width: 100%">
+                                <table class="table-bordered" border="1" cellpadding="10" align="center" cellspacing="20" style="width: 80%">
                                     
         
                                     <!-- DATA SUPPLIER -->
@@ -101,39 +100,38 @@
                                             </td>
                                             @php $total2 = 0; @endphp
                                             <td class="text-right" style="width: 5%" align="right">
-                                                <br>
-                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411211')->sum('nilai_pajak'), 0) }} <br>
-                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411121')->sum('nilai_pajak'), 0) }} <br>
-                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411122')->sum('nilai_pajak'), 0) }} <br>
-                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411124')->sum('nilai_pajak'), 0) }} <br>
-                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411128')->sum('nilai_pajak'), 0) }} <br>
-                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411618')->sum('nilai_pajak'), 0) }} <br>
-                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411619')->sum('nilai_pajak'), 0) }}<br>
-                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411212')->sum('nilai_pajak'), 0) }}<br>
-                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411222')->sum('nilai_pajak'), 0) }}
+                                                {{ number_format($total2 = $datapajaklsrekapsemuaopd->where('akun_pajak', '411211')->sum('nilai_pajak'), 0) }} <br>
+                                                {{ number_format($total2 = $datapajaklsrekapsemuaopd->where('akun_pajak', '411121')->sum('nilai_pajak'), 0) }} <br>
+                                                {{ number_format($total2 = $datapajaklsrekapsemuaopd->where('akun_pajak', '411122')->sum('nilai_pajak'), 0) }} <br>
+                                                {{ number_format($total2 = $datapajaklsrekapsemuaopd->where('akun_pajak', '411124')->sum('nilai_pajak'), 0) }} <br>
+                                                {{ number_format($total2 = $datapajaklsrekapsemuaopd->where('akun_pajak', '411128')->sum('nilai_pajak'), 0) }} <br>
+                                                {{ number_format($total2 = $datapajaklsrekapsemuaopd->where('akun_pajak', '411618')->sum('nilai_pajak'), 0) }}<br>
+                                                {{ number_format($total2 = $datapajaklsrekapsemuaopd->where('akun_pajak', '411619')->sum('nilai_pajak'), 0) }}<br>
+                                                {{ number_format($total2 = $datapajaklsrekapsemuaopd->where('akun_pajak', '411212')->sum('nilai_pajak'), 0) }}<br>
+                                                {{ number_format($total2 = $datapajaklsrekapsemuaopd->where('akun_pajak', '411222')->sum('nilai_pajak'), 0) }}
                                             </td>
                                         </tr>
 
                                         @php $total = 0; @endphp
                                             <tr style="border: 10;" align="left">
                                                 <td colspan="3" align="right"><b>TOTAL</b></td>
-                                                <td align="right"><b>{{ number_format($total = $datapajakgurekap->sum('nilai_pajak'), 0) }}</b></td>
+                                                <td align="right"><b>{{ number_format($total = $datapajaklsrekapsemuaopd->sum('nilai_pajak'), 0) }}</b></td>
                                             </tr>
                                 </table>
                             </div>
 
                             <br><br><br>
-                            <div class="row" border="0" align="center" style="width: 145%">
+                            <div class="row" border="0" align="center" style="width: 150%">
                                 <div class="col-1">
                                 </div>
                                 <div class="col-4">
                                     </td>
                                 </div>
-                                <div class="col-7" style="width: 20%;">
+                                <div class="col-5" style="width: 15%;">
                                     Palu, {{ now()->format('d M Y') }}<br>
-                                    PENGGUNA ANGGARAN<br><br><br><br><br><br>
-                                    <u><b>{{ $bulanrekap->nama_pa_kpa }}</b></u><br>
-                                    <b>NIP. {{ $bulanrekap->nip_pa_kpa }}</b>
+                                    <td><center><b>{{ $bulanrekapsemuaopd->jabatan_bud_kbud }}</b></center></td><br><br><br><br>
+                                    <u><b>{{ $bulanrekapsemuaopd->nama_bud_kbud }}</b></u><br>
+                                    <b>NIP. {{ $bulanrekapsemuaopd->nip_bud_kbud }}</b>
                                 </div>
                             </div>
                                 

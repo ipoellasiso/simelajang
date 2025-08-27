@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BelanjalsguModel extends Model
+class Sp2dtppModel extends Model
 {
     use HasFactory;
-    protected $table = "belanja1";
+    protected $table = "Sp2dtpp";
     protected $primaryKey = "id";
     protected $fillable = [
-        'id',
-        'norekening',
-        'uraian',
-        'nilai',
-        'id_sp2d',
+        'id_belanja1',
+        'periode',
         'status1',
-        'status2'
+        'status2',
+        'id_sp2d'
     ];
 }

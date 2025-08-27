@@ -66,28 +66,38 @@
                                             <th class="text-center">Nilai Pajak</th>
                                         </tr>
                                         <tr>
-                                            <td class="text-center" style="width: 1%">
-                                                1<br><br>
-                                                <br>
-                                                <br>
-                                                <br>
-
+                                            <td style="width: 2%">
+                                                1 <br>
+                                                2 <br>
+                                                3 <br>
+                                                4 <br>
+                                                5 <br>
+                                                6 <br>
+                                                7 <br>
+                                                8 <br>
+                                                9
                                             </td>
-                                            <td class="" style="width: 10%">
+                                            <td class="text-center" style="width: 10%">
                                                 411211 <br>
                                                 411121 <br>
                                                 411122 <br>
                                                 411124 <br>
                                                 411128 <br>
-                                                411618
+                                                411618 <br>
+                                                411619 <br>
+                                                411212 <br>
+                                                411222
                                             </td>
-                                            <td class="" style="width: 15%">
+                                            <td class="text-center" style="width: 15%">
                                                 Pajak Pertambahan Nilai <br>
                                                 PPh 21 <br>
                                                 Pajak Penghasilan PS 22 <br>
                                                 Pajak Penghasilan PS 23 <br>
                                                 Pajak Penghasilan PS 24 <br>
-                                                (Pajak Pertambahan Nilai, PPh 21, Pajak Penghasilan PS 22, 23 dan 24) <br>
+                                                (PPn, PPh 21, PPh 22, Pph 23)<br>
+                                                (PPn, PPh 21, PPh 22, Pph 23)<br>
+                                                (PPn, PPh 21, PPh 22, Pph 23)<br>
+                                                (PPn, PPh 21, PPh 22, Pph 23) 
                                             </td>
                                             @php $total2 = 0; @endphp
                                             <td class="text-right" style="width: 5%" align="right">
@@ -96,7 +106,10 @@
                                                 {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411122')->sum('nilai_pajak'), 0) }} <br>
                                                 {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411124')->sum('nilai_pajak'), 0) }} <br>
                                                 {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411128')->sum('nilai_pajak'), 0) }} <br>
-                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411618')->sum('nilai_pajak'), 0) }}
+                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411618')->sum('nilai_pajak'), 0) }} <br>
+                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411619')->sum('nilai_pajak'), 0) }}<br>
+                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411212')->sum('nilai_pajak'), 0) }}<br>
+                                                {{ number_format($total2 = $datapajakgurekap->where('akun_pajak', '411222')->sum('nilai_pajak'), 0) }}
                                             </td>
                                         </tr>
 

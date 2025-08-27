@@ -503,7 +503,8 @@ class TarikdataController extends Controller
                     'norekening' => $row["kode_rekening"],
                     'uraian' => $row["uraian"],
                     'nilai' => $row["nilai"],
-                    'id_sp2d' => $nomoracak
+                    'id_sp2d' => $nomoracak,
+                    'status1' => 'Belum',
                 ];
                 DB::table('belanja1')->insert($databelanja1);
             } 
