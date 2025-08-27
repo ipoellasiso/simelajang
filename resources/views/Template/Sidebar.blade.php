@@ -59,6 +59,7 @@
         <ul class="">
           <li><a href="/tarikpajaksipdri"><i class="far fa-circle"></i>LS</a></li>
           <li><a href="/tarikpajaksipdrigu"><i class="far fa-circle"></i>GU</a></li>
+          <li><a href="/tarikpajaksipdrikkpd"><i class="far fa-circle"></i>KKPD</a></li>
         </ul>
       </li>
       @endif

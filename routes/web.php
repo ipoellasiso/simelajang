@@ -86,9 +86,11 @@ Route::get('/user/opd', [UserController::class, 'getDataopd'])->middleware('auth
 // ======= DATA TARIK PAJAK SIPD RI =======
 Route::get('/tarikpajaksipdri', [TarikdataController::class, 'index'])->middleware('auth:web','checkRole:Admin');
 Route::get('/tarikpajaksipdrigu', [TarikdataController::class, 'indexgu'])->middleware('auth:web','checkRole:Admin');
+Route::get('/tarikpajaksipdrikkpd', [TarikdataController::class, 'indexkkpd'])->middleware('auth:web','checkRole:Admin');
 
 Route::post('/simpanjson', [TarikdataController::class, 'save_json'])->middleware('auth:web','checkRole:Admin');
 Route::post('/simpanjsongu', [TarikdataController::class, 'save_jsongu'])->middleware('auth:web','checkRole:Admin');
+Route::post('/simpanjsonkkpd', [TarikdataController::class, 'save_jsonkkpd'])->middleware('auth:web','checkRole:Admin');
 Route::post('/simpanjsontbp', [TarikdataController::class, 'save_jsontbp'])->middleware('auth:web','checkRole:User');
 
 // ======= DATA VERIFIKASI TBP =======

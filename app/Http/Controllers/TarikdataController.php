@@ -104,6 +104,50 @@ class TarikdataController extends Controller
         return view('Tarik_data.Pajakgu', $data);
     }
 
+    public function indexkkpd(Request $request)
+    {
+        $userId = Auth::guard('web')->user()->id;
+        $data = array(
+            'title'             => 'Tarik Data SP2D KKPD SIPD RI',
+            'active_side_tarik' => 'active',
+            'active_tarikgu'    => 'active',
+            'page_title'        => 'Pengaturan',
+            'breadcumd1'        => 'Kelola User',
+            'breadcumd2'        => 'List User',
+            'userx'             => UserModel::where('id',$userId)->first(['fullname','role','gambar']),
+            'opd'                  => DB::table('users')
+                                    // ->join('opd',  'opd.id', 'users.id_opd')
+                                    // ->select('fullname','nama_opd')
+                                    ->where('nama_opd', auth()->user()->nama_opd)
+                                    ->first(),
+        );
+
+        if ($request->ajax()) {
+
+            // $datauser = UserModel::select('id', 'id_opd', 'fullname', 'email', 'role', 'gambar')
+            //             ->leftjoin('opd', 'users.id_opd', 'opd.id',)
+            //             ->get();
+
+            $dt1 = DB::table('sp2d')
+                        ->select('nomor_sp2d','tanggal_sp2d','nama_skpd','keterangan_sp2d','nilai_sp2d','nomor_spm', 'jenis')
+                        // ->whereIn('jenis',['GU'])
+                        ->whereBetween('sp2d.tanggal_sp2d', ['2025-01-01', '2025-12-31'])
+                        // ->whereBetween('sp2d.tanggal_sp2d', ['2024-07-01', '2024-07-30'])
+                        ->get();
+
+            return DataTables::of($dt1)
+                    ->addIndexColumn()
+                    ->addColumn('nilai_sp2d', function($row) {
+                        return number_format($row->nilai_sp2d);
+                    })
+                    ->rawColumns(['nilai_sp2d'])
+                    ->make(true);
+        }
+
+
+        return view('Tarik_data.Pajakkkpd', $data);
+    }
+
     public function indextbp(Request $request)
     {
         $userId = Auth::guard('web')->user()->id;
@@ -452,6 +496,54 @@ class TarikdataController extends Controller
             $datasp2d->nama_bud_kbud = $dt["gu"]["nama_bud_kbud"];
             $datasp2d->jabatan_bud_kbud = $dt["gu"]["jabatan_bud_kbud"];
             $datasp2d->nip_bud_kbud = $dt["gu"]["nip_bud_kbud"];
+            $datasp2d->save();
+
+            foreach($detail as $row){
+                $databelanja1 = [
+                    'norekening' => $row["kode_rekening"],
+                    'uraian' => $row["uraian"],
+                    'nilai' => $row["nilai"],
+                    'id_sp2d' => $nomoracak
+                ];
+                DB::table('belanja1')->insert($databelanja1);
+            } 
+        
+        return redirect()->back()->with('status', 'Data Berhasil diSimpan');
+
+        }
+
+        public function save_jsonkkpd(Request $request)
+    {
+        // Validasi input
+        $nomoracak = Str::random(10);
+
+        $datasp2d = $request->input('jsontextareakkpd');
+        $dt = json_decode($datasp2d, true);
+
+        $detail = $dt["detail"];
+        
+        $ceksp2d = Sp2dModel::where('nomor_sp2d', $dt["nomor_sp_2_d"])->count();
+        if($ceksp2d > 0)
+        {
+            return redirect()->back()->with('error', 'SP2D Sudah Ada');
+        }
+            $datasp2d = new Sp2dModel();
+            $datasp2d->idhalaman = $nomoracak;
+            // $datasp2d->jenis = $dt["jenis"];
+            $datasp2d->tahun = $dt["tahun"];
+            $datasp2d->nomor_rekening = $dt["nomor_rekening"];
+            $datasp2d->nama_bank = $dt["nama_bank"];
+            $datasp2d->nomor_sp2d = $dt["nomor_sp_2_d"];
+            $datasp2d->tanggal_sp2d = Carbon::Parse($dt["tanggal_sp_2_d"])->format('Y-m-d');
+            $datasp2d->nama_skpd = $dt["nama_skpd"];
+            $datasp2d->keterangan_sp2d = $dt["keterangan_sp2d"];
+            $datasp2d->nilai_sp2d = $dt["nilai_sp2d"];
+            $datasp2d->nomor_spm =  $dt["nomor_spm"];
+            $datasp2d->tanggal_spm = Carbon::Parse( $dt["tanggal_spm"])->format('Y-m-d');
+            $datasp2d->nama_ibu_kota = $dt["nama_ibu_kota"];
+            $datasp2d->nama_bud_kbud = $dt["nama_bud_kbud"];
+            $datasp2d->jabatan_bud_kbud = $dt["jabatan_bud_kbud"];
+            $datasp2d->nip_bud_kbud = $dt["nip_bud_kbud"];
             $datasp2d->save();
 
             foreach($detail as $row){
