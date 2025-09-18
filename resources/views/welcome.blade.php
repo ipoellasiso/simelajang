@@ -72,7 +72,7 @@ https://templatemo.com/tm-569-edu-meeting
             <div class="row">
               <div class="col-lg-12">
                 <div class="caption">
-              <h6><i class="fas fa-download-paper"></i> Hello Everyone</h6>
+              <h6> Hello Everyone <i class="fas fa-hand-paper"></i></h6>
               <h2>Selamat Datang Di Simelajang</h2>
               <p>Sistem Informasi Manajemen Pelaporan Pajak Negara <a rel="nofollow" href="#" target="_blank">(SIMELAJANG)</a>. Sistem ini Mempermudah Organisasi Perangkat Daerah (OPD) untuk Mengelola Data Pajak dan Menghasilkan Laporan yang Cepat dan Efektif <a rel="nofollow" href="#" target="_blank">Pemerintah Kota Palu</a>.</p>
               <div class="main-button-red">
